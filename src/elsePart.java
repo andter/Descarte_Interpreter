@@ -13,20 +13,21 @@ public class elsePart implements Expression{
         System.out.println();
 
         int firstElse = tokens.indexOf("ELSE");
-        int firstFI = tokens.indexOf("FI");
 
         if (firstElse == -1) { //Else doesn't exist
             if(tokens.size() == 1 && tokens.get(0).equals("FI")){
                 valid = true;
             }
         } else{
-            if(firstElse < firstFI){
-                if(tokens.between(firstElse+1, firstFI).size() > 1) {
-                    statementList = new stmtList(tokens.between(firstElse + 1, firstFI));
+            if(tokens.get(tokens.size()-1).equals("FI"));
+            if(firstElse < tokens.size()){
+                if(tokens.between(firstElse+1, tokens.size()-1).size() > 1) {
+                    statementList = new stmtList(tokens.between(firstElse + 1, tokens.size()-1));
+                    executable = true;
                 } else{
                     statementList = new stmtList();
+                    executable = false;
                 }
-                executable = true;
             }
         }
     }

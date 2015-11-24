@@ -37,7 +37,7 @@ public class ifStmt extends stmt implements Expression{
                         else{
                             statementList = new stmtList();
                         }
-                        elsePart = new elsePart(tokens.between(beginElse, beginFI+1));
+                        elsePart = new elsePart(tokens.between(beginElse, tokens.size()));
                     }
                 }
             }
