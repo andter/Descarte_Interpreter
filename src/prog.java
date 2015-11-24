@@ -5,12 +5,12 @@ import java.util.ArrayList;
  */
 public class prog implements Expression{
     private boolean valid = false;
-    stmtList statementList;
+    stmtList statementList = null;
     boolean debug;
 
     public prog(TokenList tokens){
-        //System.out.println("PROG-----");
-        //tokens.printList();
+        System.out.println("PROG-----");
+        tokens.printList();
 
         if(tokens.get(tokens.size()-1).equals(".")){
             valid = true;
@@ -26,6 +26,14 @@ public class prog implements Expression{
     }
     @Override
     public boolean isValid() {
-        return valid;
+        if(statementList == null){
+            return false;
+        }
+        else{
+            if(statementList.isValid()){
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -3,6 +3,7 @@
  */
 public class stmt implements Expression{
     boolean valid = false;
+    stmt statement;
 
     public enum Type {
         IF,
@@ -22,7 +23,7 @@ public class stmt implements Expression{
                 System.out.print("IF STATEMENT- ");
                 tokens.printList();
                 this.type = Type.IF;
-                ifStmt statement = new ifStmt(tokens);
+                statement = new ifStmt(tokens);
             } else if (tokens.get(0).equals("LOOP")) {
                 System.out.print("LOOP STATEMENT- ");
                 tokens.printList();
@@ -35,6 +36,7 @@ public class stmt implements Expression{
             } else if (tokens.get(0).equals("ID")) {
                 System.out.print("ASSIGNMENT STATEMENT- ");
                 tokens.printList();
+                statement = new assignStmt(tokens);
                 this.type = Type.ASSIGNMENT;
 
             } else if (tokens.get(0).equals("READ")) {
@@ -52,6 +54,7 @@ public class stmt implements Expression{
 
     public stmt(){
         this.type = Type.NONE;
+        valid = true;
     }
 
     public void execute(){
@@ -78,6 +81,17 @@ public class stmt implements Expression{
     }
     @Override
     public boolean isValid() {
-        return valid;
+        System.out.println("CHECKING STATEMENT ISVALID()");
+        if(type == Type.NONE){
+            return true;
+        }
+        if(statement.isValid()){
+            return true;
+        }
+  /*      if(valid){
+            System.out.println("STATEMENT DEEMED VALID");
+            return true;
+        }*/
+        return false;
     }
 }

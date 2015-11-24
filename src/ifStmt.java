@@ -1,11 +1,11 @@
 /**
  * Created by andy on 11/23/2015.
  */
-public class ifStmt implements Expression{
+public class ifStmt extends stmt implements Expression{
     boolean valid = false;
-    expr expression;
-    stmtList statementList;
-    elsePart elsePart;
+    expr expression = null;
+    stmtList statementList = null;
+    elsePart elsePart = null;
 
     public ifStmt(TokenList tokens){
         System.out.println("IFSTMT-----");
@@ -18,14 +18,23 @@ public class ifStmt implements Expression{
                 if (beginElse == -1) { //No else statement
                     if (beginFI != -1 && (beginThen < beginFI)) {
                         expression = new expr(tokens.between(1, beginThen));
-                        statementList = new stmtList(tokens.between(beginThen+1, beginFI));
+                        if(tokens.between(beginThen+1, beginFI).size() > 0) {
+                            statementList = new stmtList(tokens.between(beginThen + 1, beginFI)); //Grammar 11 makes sure statement list has something in it
+                        } else{
+                            statementList = new stmtList();
+                        }
                         elsePart = new elsePart(tokens.between(beginFI, beginFI+1));
                     }
                 }
                 else{
                     if(beginFI != -1 && (beginThen < beginElse) && (beginElse < beginFI)){
                         expression = new expr(tokens.between(1, beginThen));
-                        statementList = new stmtList(tokens.between(beginThen+1, beginElse));
+                        if(tokens.between(beginThen+1, beginElse).size() > 0) {
+                            statementList = new stmtList(tokens.between(beginThen + 1, beginElse)); //Grammar 11 makes sure statement list has something in it
+                        }
+                        else{
+                            statementList = new stmtList();
+                        }
                         elsePart = new elsePart(tokens.between(beginElse, beginFI+1));
                     }
                 }
@@ -35,6 +44,14 @@ public class ifStmt implements Expression{
 
     @Override
     public boolean isValid() {
+        System.out.println("CHECKING IFSTATEMENT VALID");
+        if(expression == null || statementList == null || elsePart == null){
+            return false;
+        }else{
+            if(expression.isValid() && statementList.isValid() && elsePart.isValid()){
+                return true;
+            }
+        }
         return valid;
     }
 

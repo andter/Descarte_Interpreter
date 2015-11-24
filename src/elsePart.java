@@ -20,8 +20,11 @@ public class elsePart implements Expression{
             }
         } else{
             if(firstElse < firstFI){
-                statementList = new stmtList(tokens.between(firstElse+1, firstFI));
-                valid = true;
+                if(tokens.between(firstElse+1, firstFI).size() > 1) {
+                    statementList = new stmtList(tokens.between(firstElse + 1, firstFI));
+                } else{
+                    statementList = new stmtList();
+                }
                 executable = true;
             }
         }
@@ -29,6 +32,11 @@ public class elsePart implements Expression{
 
     @Override
     public boolean isValid() {
+        System.out.println("CHECKING ELSEPART ISVALID()");
+        if(valid || statementList.isValid()){
+            System.out.println("ELSE PART VALID");
+            return true;
+        }
         return false;
     }
 

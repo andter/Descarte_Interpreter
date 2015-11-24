@@ -13,6 +13,7 @@ public class Main {
         TokenList tokens = analyzer.getTokens();
 
         prog program = new prog(tokens);
+        System.out.println("Valid? " + program.isValid());
         //program.execute();
     }
 }

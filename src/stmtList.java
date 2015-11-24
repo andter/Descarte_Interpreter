@@ -4,9 +4,10 @@ import java.util.ArrayList;
  * Created by andy on 11/22/2015.
  */
 public class stmtList implements Expression {
-    stmt statement;
-    stmtTail statementTail;
+    stmt statement = null;
+    stmtTail statementTail = null;
     boolean valid = false;
+    boolean executable = true;
 
     public stmtList(TokenList tokens){
         System.out.println("StmtLIST-----");
@@ -42,6 +43,12 @@ public class stmtList implements Expression {
         }
     }
 
+    public stmtList(){
+        valid = true;
+        executable = false;
+
+    }
+
     public void execute(){
         System.out.println("Execute StatementList");
         statement.execute();
@@ -50,6 +57,18 @@ public class stmtList implements Expression {
 
     @Override
     public boolean isValid() {
-        return valid;
+        System.out.println("CHECKING STMTLIST ISVALID()");
+        if(statement == null || statementTail == null){
+            if(valid){
+                return true;
+            }
+            return false;
+        }
+        else{
+            if(statement.isValid() && statementTail.isValid()){
+                return true;
+            }
+        }
+        return false;
     }
 }
