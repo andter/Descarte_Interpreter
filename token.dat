@@ -1,3 +1,6 @@
     IF something > somethingelse THEN
+
     ELSE
-    FI .
+        ID := 5;
+    FI
+    .
