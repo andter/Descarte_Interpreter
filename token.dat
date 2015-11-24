@@ -1,4 +1,6 @@
         IF SUM - NEWSUM < EPSILON AND NEWSUM - SUM < EPSILON THEN
              RESULT := NEWSUM;
+        ELSE
+            RESULT := 5;
         FI
         .
