@@ -13,6 +13,6 @@ public class Main {
         TokenList tokens = analyzer.getTokens();
 
         prog program = new prog(tokens);
-        program.execute();
+        //program.execute();
     }
 }

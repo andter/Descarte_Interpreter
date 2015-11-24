@@ -1,5 +1,4 @@
         IF SUM - NEWSUM < EPSILON AND NEWSUM - SUM < EPSILON THEN
              RESULT := NEWSUM;
-             BREAK MAINLOOP
-        ELSE SUM   := NEWSUM;  K := K + 1    FI
+        FI
         .
