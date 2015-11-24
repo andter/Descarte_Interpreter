@@ -1,5 +1,2 @@
-    IF something > somethingelse THEN
-    ELSE
-        ID := 5;
-    FI
-    .
+    statement := 5;
+    statement := 6 .
