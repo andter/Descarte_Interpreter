@@ -1,2 +1,5 @@
-    statement := 5;
-    statement := 6 .
+    IF expr THEN
+        Dosomething := 50;
+    ELSE
+        Dosomething := 20;
+    FI .

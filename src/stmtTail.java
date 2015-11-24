@@ -15,13 +15,11 @@ public class stmtTail implements Expression{
 
         if(tokens.size() > 0) {
             if (tokens.get(0).equals(";")) {
-                valid = true;
                 tokens.remove(0);
                 tokens.printList();
                 if(tokens.size() > 0) {
                     String newStatement = tokens.get(0);
                     int beginTail = -1;
-
                     switch (newStatement) {
                         case "ID":
                             beginTail = tokens.indexOf(";");
