@@ -25,14 +25,27 @@ public class stmt implements Expression{
         if(tokens.size() > 0) {
             if (tokens.get(0).equals("IF")) {
                 this.type = Type.IF;
-                statement = new ifStmt(tokens);
+                int index = 0;
+                int input = 0;
+                boolean statementValid = false;
+                while(input != -1 || statementValid){
+                    input = tokens.getTokenIndex(index, "FI");
+                    System.out.println("Processing: " + index + " Statement, " + input);
+                    if(input != -1) {
+                        statement = new ifStmt(tokens.between(0, input + 1));
+                        if(this.isValid()){
+                            statementValid = true;
+                        }
+                    }
+                    index++;
+                }
             } else if (tokens.get(0).equals("LOOP")) {
                 this.type = Type.LOOP;
             } else if (tokens.get(0).equals("BREAK")) {
                 this.type = Type.BREAK;
             } else if (tokens.get(0).equals("ID")) {
-                statement = new assignStmt(tokens);
                 this.type = Type.ASSIGNMENT;
+                statement = new assignStmt(tokens);
             } else if (tokens.get(0).equals("READ")) {
                 this.type = Type.READ;
             } else if (tokens.get(0).equals("PRINT")) {
@@ -74,7 +87,7 @@ public class stmt implements Expression{
         if(type == Type.NONE){
             return true;
         }
-        if(statement.isValid()){
+        if(statement != null && statement.isValid()){
             return true;
         }
   /*      if(valid){

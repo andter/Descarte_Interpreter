@@ -16,6 +16,7 @@ public class ifStmt extends stmt implements Expression{
             int beginThen = tokens.indexOf("THEN");
             int beginElse = tokens.indexOf("ELSE");
             int beginFI = tokens.indexOf("FI");
+            System.out.println("IF INFO: \nBeginThen:" + beginThen + "\nBeginElse:" + beginElse + "\nBeginFI:" + beginFI + "\n");
             if(beginThen != -1) {
                 if (beginElse == -1) { //No else statement
                     if (beginFI != -1 && (beginThen < beginFI)) {

@@ -1,14 +1,13 @@
 /**
- * Created by andy on 11/23/2015.
+ * Created by andy on 11/24/2015.
  */
-public class boolTerm implements Expression {
+public class boolTermTail implements Expression{
 
-    public boolTerm(TokenList tokens){
-        System.out.println("BOOLTERM-----");
+
+    public boolTermTail(TokenList tokens){
+        System.out.println("BoolTermTail-----");
         tokens.printList();
         System.out.println();
-
-
     }
 
     @Override
