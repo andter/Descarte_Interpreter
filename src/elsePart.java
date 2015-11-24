@@ -10,6 +10,7 @@ public class elsePart implements Expression{
     public elsePart(TokenList tokens){
         System.out.println("ELSEPART-----");
         tokens.printList();
+        System.out.println();
 
         int firstElse = tokens.indexOf("ELSE");
         int firstFI = tokens.indexOf("FI");

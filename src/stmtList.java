@@ -12,6 +12,8 @@ public class stmtList implements Expression {
     public stmtList(TokenList tokens){
         System.out.println("StmtLIST-----");
         tokens.printList();
+        System.out.println();
+
         String newStatement = tokens.get(0);
         int beginTail = -1;
 

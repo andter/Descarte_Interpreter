@@ -11,6 +11,7 @@ public class prog implements Expression{
     public prog(TokenList tokens){
         System.out.println("PROG-----");
         tokens.printList();
+        System.out.println("");
 
         if(tokens.get(tokens.size()-1).equals(".")){
             valid = true;

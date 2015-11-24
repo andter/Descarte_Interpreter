@@ -18,35 +18,24 @@ public class stmt implements Expression{
     Type type;
 
     public stmt(TokenList tokens){
+        System.out.println("STMT-----");
+        tokens.printList();
+        System.out.println();
+
         if(tokens.size() > 0) {
             if (tokens.get(0).equals("IF")) {
-                System.out.print("IF STATEMENT- ");
-                tokens.printList();
                 this.type = Type.IF;
                 statement = new ifStmt(tokens);
             } else if (tokens.get(0).equals("LOOP")) {
-                System.out.print("LOOP STATEMENT- ");
-                tokens.printList();
                 this.type = Type.LOOP;
             } else if (tokens.get(0).equals("BREAK")) {
-                System.out.print("BREAK STATEMENT- ");
-                tokens.printList();
                 this.type = Type.BREAK;
-
             } else if (tokens.get(0).equals("ID")) {
-                System.out.print("ASSIGNMENT STATEMENT- ");
-                tokens.printList();
                 statement = new assignStmt(tokens);
                 this.type = Type.ASSIGNMENT;
-
             } else if (tokens.get(0).equals("READ")) {
-                System.out.print("READ STATEMENT- ");
-                tokens.printList();
                 this.type = Type.READ;
-
             } else if (tokens.get(0).equals("PRINT")) {
-                System.out.print("PRINT STATEMENT: ");
-                tokens.printList();
                 this.type = Type.PRINT;
             }
         }

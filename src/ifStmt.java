@@ -10,6 +10,8 @@ public class ifStmt extends stmt implements Expression{
     public ifStmt(TokenList tokens){
         System.out.println("IFSTMT-----");
         tokens.printList();
+        System.out.println();
+
         if(tokens.get(0).equals("IF")){
             int beginThen = tokens.indexOf("THEN");
             int beginElse = tokens.indexOf("ELSE");

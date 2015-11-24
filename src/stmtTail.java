@@ -11,6 +11,8 @@ public class stmtTail implements Expression{
     public stmtTail(TokenList tokens) {
         System.out.println("stmtTail-----");
         tokens.printList();
+        System.out.println();
+
         if(tokens.size() > 0) {
             if (tokens.get(0).equals(";")) {
                 valid = true;
