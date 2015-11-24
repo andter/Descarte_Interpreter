@@ -16,7 +16,7 @@ public class ifStmt implements Expression{
             int beginFI = tokens.indexOf("FI");
             if(beginThen != -1) {
                 if (beginElse == -1) { //No else statement
-                    if (beginFI != -1) {
+                    if (beginFI != -1 && beginThen < beginFI) {
                         expression = new expr(tokens.between(1, beginThen));
                         statementList = new stmtList(tokens.between(beginThen+1, beginFI));
                     }
