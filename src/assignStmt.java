@@ -7,6 +7,8 @@ public class assignStmt extends stmt implements Expression {
     public assignStmt(TokenList tokens){
         System.out.println("ASSIGNSTMT-----");
         tokens.printList();
+        System.out.println();
+
         if(tokens.size() > 2) {
             if (tokens.get(0).equals("ID")) {
                 if (tokens.get(1).equals(":=")) {
