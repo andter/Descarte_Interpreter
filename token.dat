@@ -1,8 +1,8 @@
     IF I > 5 THEN
         VAR := 5;
         IF VAR = 5 THEN
-        VAR := 5 + 5;
+        VAR := 5 + blah;
         ELSE
-            VAR := 6;
+            Something := blah;
         FI
      FI .

@@ -30,13 +30,13 @@ public class stmt implements Expression{
                 this.type = Type.LOOP;
             } else if (tokens.get(0).equals("BREAK")) {
                 this.type = Type.BREAK;
-            } else if (tokens.get(0).equals("ID")) {
-                this.type = Type.ASSIGNMENT;
-                statement = new assignStmt(tokens);
             } else if (tokens.get(0).equals("READ")) {
                 this.type = Type.READ;
             } else if (tokens.get(0).equals("PRINT")) {
                 this.type = Type.PRINT;
+            } else {
+                this.type = Type.ASSIGNMENT;
+                statement = new assignStmt(tokens);
             }
         }
     }

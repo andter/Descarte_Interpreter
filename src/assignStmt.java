@@ -9,12 +9,11 @@ public class assignStmt extends stmt implements Expression {
         tokens.printList();
         System.out.println();
 
+        System.out.println("TOKEN ENDING: " + tokens.get(tokens.size()-1));
         if(tokens.size() > 2) {
-            if (tokens.get(0).equals("ID")) {
                 if (tokens.get(1).equals(":=")) {
                     expression = new expr(tokens.between(2, tokens.size()));
                 }
-            }
         }
     }
     @Override

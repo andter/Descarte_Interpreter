@@ -18,17 +18,6 @@ public class stmtList implements Expression {
         int beginTail = -1;
 
         switch(newStatement){
-            case "ID":
-                beginTail = tokens.indexOf(";");
-                if(beginTail == -1){
-                    statement = new stmt(tokens);
-                    statementTail = new stmtTail();
-                }
-                else{
-                    statement = new stmt(tokens.between(0, beginTail));
-                    statementTail = new stmtTail(tokens.between(beginTail, tokens.size()));
-                }
-                break;
             case "IF":
                 beginTail = tokens.indexOf("FI");
                     statement = new stmt(tokens);
@@ -41,6 +30,14 @@ public class stmtList implements Expression {
                 break;
             default:
                 beginTail = tokens.indexOf(";");
+                if(beginTail == -1){
+                    statement = new stmt(tokens);
+                    statementTail = new stmtTail();
+                }
+                else{
+                    statement = new stmt(tokens.between(0, beginTail));
+                    statementTail = new stmtTail(tokens.between(beginTail, tokens.size()));
+                }
                 break;
         }
     }

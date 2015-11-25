@@ -123,7 +123,7 @@ public class TokenAnalyzer {
             }
 
             if(!containsToken(currentToken) && currentToken.matches("[a-zA-Z0-9]+") && containsToken(nextChar)){
-                printList.add("ID");
+                printList.add(currentToken);
                 currentToken = nextChar;
                 continue;
             }
