@@ -36,7 +36,7 @@ public class ifStmt extends stmt implements Expression{
             System.out.println("Count: " + count);
             System.out.println("Location: " + fiLocation);
             System.out.println("LAST ELSE: " + elseLocation);
-            if(firstThen != -1) {
+            if(firstThen != -1 && count != -1) {
                 expression = new expr(tokens.between(1, firstThen));
                 if(elseLocation != 0){
                     statementList = new stmtList(tokens.between(firstThen + 1, elseLocation));
