@@ -9,15 +9,14 @@ public class stmtTail implements Expression{
     TokenList temp;
 
     public stmtTail(TokenList tokens) {
-        System.out.println("stmtTail-----");
-        tokens.printList();
-        System.out.println();
-
         if(tokens.size() > 0) {
             if (tokens.get(0).equals(";")) {
                 tokens.remove(0);
             }
                 if(tokens.size() > 0) {
+                    System.out.println("stmtTail-----");
+                    tokens.printList();
+                    System.out.println();
                     String newStatement = tokens.get(0);
                     int beginTail = -1;
                     switch (newStatement) {

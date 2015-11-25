@@ -14,6 +14,7 @@ public class ifStmt extends stmt implements Expression{
         int firstThen = tokens.indexOf("THEN");
 
         if(tokens.get(0).equals("IF")){
+            boolean complete = false;
             int count = 0;
             int fiLocation = 0;
             int elseLocation = 0;
@@ -25,17 +26,19 @@ public class ifStmt extends stmt implements Expression{
                     count--;
                 }
                 if(count == 0 && s.equals("FI")){
-                    fiLocation = index;
+                    if(!complete) {
+                        fiLocation = index;
+                        complete = true;
+                    }
                 }
                 if(count == 1 && s.equals("ELSE")){
-                    elseLocation = index;
-                    System.out.println("COUNT == 1");
+                    if(!complete) {
+                        elseLocation = index;
+                        System.out.println("COUNT == 1");
+                    }
                 }
                 index++;
             }
-            System.out.println("Count: " + count);
-            System.out.println("Location: " + fiLocation);
-            System.out.println("LAST ELSE: " + elseLocation);
             if(firstThen != -1 && count != -1) {
                 expression = new expr(tokens.between(1, firstThen));
                 if(elseLocation != 0){

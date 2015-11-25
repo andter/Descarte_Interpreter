@@ -20,8 +20,28 @@ public class stmtList implements Expression {
         switch(newStatement){
             case "IF":
                 beginTail = tokens.indexOf("FI");
-                    statement = new stmt(tokens);
-                    statementTail = new stmtTail();
+                boolean complete = false;
+                int count = 0;
+                int index = 0;
+                int location = -1;
+                for(String s : tokens){
+                    if(s.equals("IF")){
+                        count++;
+                    } else if(s.equals("FI")){
+                        count--;
+                    }
+                    if(count == 0 && s.equals("FI")){
+                        if(!complete) {
+                            location = index;
+                            complete = true;
+                        }
+                    }
+                    index++;
+                }
+                if(location != -1){
+                    statement = new stmt(tokens.between(0, location + 1));
+                    statementTail = new stmtTail(tokens.between(location +1, tokens.size()));
+                }
                 break;
             case "LOOP":
                 beginTail = tokens.indexOf("REPEAT");

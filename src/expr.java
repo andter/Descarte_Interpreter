@@ -9,6 +9,16 @@ public class expr implements Expression{
         System.out.println("EXPR-----");
         tokens.printList();
         System.out.println();
+
+        int firstOr = tokens.indexOf("OR");
+        if(firstOr == -1){
+            boolTerm = new boolTerm(tokens);
+            boolTermTail = new boolTermTail();
+        }
+        else{
+            boolTerm = new boolTerm(tokens.between(0, firstOr));
+            boolTermTail = new boolTermTail(tokens.between(firstOr, tokens.size()));
+        }
     }
 
     @Override

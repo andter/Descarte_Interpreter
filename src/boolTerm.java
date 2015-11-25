@@ -7,8 +7,6 @@ public class boolTerm implements Expression {
         System.out.println("BOOLTERM-----");
         tokens.printList();
         System.out.println();
-
-
     }
 
     @Override
