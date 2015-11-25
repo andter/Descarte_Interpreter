@@ -18,10 +18,12 @@ public class boolTermTail implements Expression{
             if(firstOr == -1){
                 boolTerm = new boolTerm(tokens);
                 boolTermTail = new boolTermTail();
+                valid = true;
             }
             else{
                 boolTerm = new boolTerm(tokens.between(0, firstOr));
                 boolTermTail = new boolTermTail(tokens.between(firstOr, tokens.size()));
+                valid = true;
             }
         }
     }
@@ -33,7 +35,10 @@ public class boolTermTail implements Expression{
 
     @Override
     public boolean isValid() {
-        return valid;
+        if(boolTerm.isValid() && boolTermTail.isValid()) {
+            return valid;
+        }
+        return false;
     }
 
     @Override
