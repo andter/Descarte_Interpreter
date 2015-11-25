@@ -11,35 +11,39 @@ public class ifStmt extends stmt implements Expression{
         System.out.println("IFSTMT-----");
         tokens.printList();
         System.out.println();
+        int firstThen = tokens.indexOf("THEN");
 
         if(tokens.get(0).equals("IF")){
-            int beginThen = tokens.indexOf("THEN");
-            int beginElse = tokens.indexOf("ELSE");
-            int beginFI = tokens.indexOf("FI");
-            System.out.println("IF INFO: \nBeginThen:" + beginThen + "\nBeginElse:" + beginElse + "\nBeginFI:" + beginFI + "\n");
-            if(beginThen != -1) {
-                if (beginElse == -1) { //No else statement
-                    if (beginFI != -1 && (beginThen < beginFI)) {
-                        expression = new expr(tokens.between(1, beginThen));
-                        if(tokens.between(beginThen+1, beginFI).size() > 0) {
-                            statementList = new stmtList(tokens.between(beginThen + 1, beginFI)); //Grammar 11 makes sure statement list has something in it
-                        } else{
-                            statementList = new stmtList();
-                        }
-                        elsePart = new elsePart(tokens.between(beginFI, beginFI+1));
-                    }
+            int count = 0;
+            int fiLocation = 0;
+            int elseLocation = 0;
+            int index = 0;
+            for(String s : tokens){
+                if(s.equals("IF")){
+                    count++;
+                } else if(s.equals("FI")){
+                    count--;
                 }
-                else{
-                    if(beginFI != -1 && (beginThen < beginElse) && (beginElse < beginFI)){
-                        expression = new expr(tokens.between(1, beginThen));
-                        if(tokens.between(beginThen+1, beginElse).size() > 0) {
-                            statementList = new stmtList(tokens.between(beginThen + 1, beginElse)); //Grammar 11 makes sure statement list has something in it
-                        }
-                        else{
-                            statementList = new stmtList();
-                        }
-                        elsePart = new elsePart(tokens.between(beginElse, tokens.size()));
-                    }
+                if(count == 0 && s.equals("FI")){
+                    fiLocation = index;
+                }
+                if(count == 1 && s.equals("ELSE")){
+                    elseLocation = index;
+                    System.out.println("COUNT == 1");
+                }
+                index++;
+            }
+            System.out.println("Count: " + count);
+            System.out.println("Location: " + fiLocation);
+            System.out.println("LAST ELSE: " + elseLocation);
+            if(firstThen != -1) {
+                expression = new expr(tokens.between(1, firstThen));
+                if(elseLocation != 0){
+                    statementList = new stmtList(tokens.between(firstThen + 1, elseLocation));
+                    elsePart = new elsePart(tokens.between(elseLocation, fiLocation));
+                } else{
+                    statementList = new stmtList(tokens.between(firstThen+1, fiLocation));
+                    elsePart = new elsePart(tokens.between(fiLocation, fiLocation+1));
                 }
             }
         }
