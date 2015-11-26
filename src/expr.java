@@ -23,7 +23,11 @@ public class expr implements Expression{
 
     @Override
     public boolean isValid() {
+        System.out.println("CHECKING EXPR ISVALID()");
+        if(boolTerm.isValid() && boolTermTail.isValid()){
             return true;
+        }
+        return false;
     }
 
     @Override

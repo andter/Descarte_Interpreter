@@ -17,12 +17,10 @@ public class boolFactorTail implements Expression{
             if(firstAnd == -1){
                 boolFactor = new boolFactor(tokens);
                 boolFactorTail = new boolFactorTail();
-                valid = true;
             }
             else{
                 boolFactor = new boolFactor(tokens.between(0, firstAnd));
                 boolFactorTail = new boolFactorTail(tokens.between(firstAnd, tokens.size()));
-                valid = true;
             }
         }
     }
@@ -34,8 +32,12 @@ public class boolFactorTail implements Expression{
 
     @Override
     public boolean isValid() {
-        if(boolFactor.isValid() && boolFactorTail.isValid()) {
-            return valid;
+        System.out.println("CHECKING BOOLFACTORTAIL ISVALID()");
+        if(valid){
+            return true;
+        }
+        if (boolFactor.isValid() && boolFactorTail.isValid()) {
+            return true;
         }
         return false;
     }

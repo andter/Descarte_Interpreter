@@ -1,8 +1,3 @@
-    IF I > 5 THEN
-        VAR := 5;
-        IF VAR = 5 THEN
-        VAR := 5 + blah;
-        ELSE
-            Something := blah;
-        FI
-     FI .
+    IF expr < 5 OR expr THEN
+        stmt := 5;
+    FI .

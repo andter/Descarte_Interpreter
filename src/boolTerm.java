@@ -13,6 +13,7 @@ public class boolTerm implements Expression {
         int firstAnd = tokens.indexOf("AND");
         if(firstAnd == -1){
             boolFactor = new boolFactor(tokens);
+            boolFactorTail = new boolFactorTail();
         }
         else{
             boolFactor = new boolFactor(tokens.between(0, firstAnd));
@@ -22,7 +23,11 @@ public class boolTerm implements Expression {
 
     @Override
     public boolean isValid() {
-        return true;
+        System.out.println("CHECKING BOOLTERM ISVALID()");
+        if(boolFactor.isValid() && boolFactorTail.isValid()) {
+            return true;
+        }
+        return false;
     }
 
     @Override

@@ -12,7 +12,7 @@ public class boolTermTail implements Expression{
         System.out.println("BoolTermTail-----");
         tokens.printList();
         System.out.println();
-        if(tokens.size() > 0 && tokens.get(0).equals("OR")){
+        if(tokens.size() > 1 && tokens.get(0).equals("OR")){
             tokens.remove(0);
             int firstOr = tokens.indexOf("OR");
             if(firstOr == -1){
@@ -35,8 +35,12 @@ public class boolTermTail implements Expression{
 
     @Override
     public boolean isValid() {
+        System.out.println("CHECKING BOOLTERMTAIL ISVALID()");
+        if(valid){
+            return true;
+        }
         if(boolTerm.isValid() && boolTermTail.isValid()) {
-            return valid;
+            return true;
         }
         return false;
     }
