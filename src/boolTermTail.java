@@ -42,6 +42,7 @@ public class boolTermTail implements Expression{
         if(boolTerm.isValid() && boolTermTail.isValid()) {
             return true;
         }
+        System.out.println("BOOLTERMTAIL NOT VALID");
         return false;
     }
 

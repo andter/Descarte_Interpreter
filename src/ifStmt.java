@@ -56,12 +56,14 @@ public class ifStmt extends stmt implements Expression{
     public boolean isValid() {
         System.out.println("CHECKING IFSTATEMENT VALID");
         if(expression == null || statementList == null || elsePart == null){
+            System.out.println("IF STATEMENT NOT VALID");
             return false;
         }else{
             if(expression.isValid() && statementList.isValid() && elsePart.isValid()){
                 return true;
             }
         }
+        System.out.println("IF STATEMENT NOT VALID");
         return valid;
     }
 

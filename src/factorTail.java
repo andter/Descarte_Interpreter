@@ -48,6 +48,10 @@ public class factorTail implements Expression {
         if(valid){
             return true;
         }
+        if(factor.isValid() && factorTail.isValid()){
+            return true;
+        }
+        System.out.println("FACTOR TAIL NOT VALID");
         return false;
     }
 

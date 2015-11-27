@@ -17,8 +17,13 @@ public class assignStmt extends stmt implements Expression {
     }
     @Override
     public boolean isValid() {
-        System.out.println("CHECKING ASSIGNSTATEMENT ISVALID()");
-        return true;
+        if(expression != null) {
+            if (expression.isValid()) {
+                return true;
+            }
+        }
+        System.out.println("ASSIGNSTMT NOT VALID");
+        return false;
     }
 
     @Override

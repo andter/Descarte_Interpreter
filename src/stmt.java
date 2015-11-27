@@ -81,6 +81,7 @@ public class stmt implements Expression{
             System.out.println("STATEMENT DEEMED VALID");
             return true;
         }*/
+        System.out.println("STMT NOT VALID");
         return false;
     }
 }

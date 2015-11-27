@@ -35,6 +35,7 @@ public class prog implements Expression{
                 return true;
             }
         }
+        System.out.println("PROGRAM NOT VALID");
         return false;
     }
 }

@@ -34,7 +34,12 @@ public class arithExpr implements Expression{
 
     @Override
     public boolean isValid() {
-        return true;
+        System.out.println("CHECKING ARITHEXPR ISVALID()");
+        if(term.isValid() && termTail.isValid()) {
+            return true;
+        }
+        System.out.println("ArithExpr NOT VALID");
+        return false;
     }
 
     @Override

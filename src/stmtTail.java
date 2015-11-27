@@ -70,11 +70,13 @@ public class stmtTail implements Expression{
             if(valid){
                 return true;
             }
+            System.out.println("STMTTAIL NOT VALID");
             return false;
         }
         if(statement.isValid() && statementTail.isValid()){
             return true;
         }
+        System.out.println("STMTTAIL NOT VALID");
         return false;
     }
 }

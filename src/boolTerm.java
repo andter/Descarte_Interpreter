@@ -27,6 +27,7 @@ public class boolTerm implements Expression {
         if(boolFactor.isValid() && boolFactorTail.isValid()) {
             return true;
         }
+        System.out.println("BOOLTERM NOT VALID");
         return false;
     }
 

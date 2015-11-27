@@ -57,6 +57,7 @@ public class boolFactor implements Expression{
         if(arithmeticExpression.isValid() && relationOption.isValid()) {
             return true;
         }
+        System.out.println("BOOLFACTOR NOT VALID");
         return false;
     }
 

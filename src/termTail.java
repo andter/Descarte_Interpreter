@@ -44,9 +44,14 @@ public class termTail implements Expression{
 
     @Override
     public boolean isValid() {
+        System.out.println("CHECKING TERMTAIL ISVALID()");
         if(valid){
             return true;
         }
+        if(term.isValid() && termTail.isValid()){
+            return true;
+        }
+        System.out.println("TERMTAIL NOT VALID");
         return false;
     }
 

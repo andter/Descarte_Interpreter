@@ -38,6 +38,7 @@ public class relationOption implements Expression{
         if(arithmeticExpression.isValid()){
             return true;
         }
+        System.out.println("RELATION OPTION NOT VALID");
         return false;
     }
 

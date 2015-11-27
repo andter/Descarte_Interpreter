@@ -27,6 +27,7 @@ public class expr implements Expression{
         if(boolTerm.isValid() && boolTermTail.isValid()){
             return true;
         }
+        System.out.println("EXPR NOT VALID");
         return false;
     }
 

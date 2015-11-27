@@ -34,6 +34,10 @@ public class term implements Expression {
 
     @Override
     public boolean isValid() {
+        if(factor.isValid() && factorTail.isValid()){
+            return true;
+        }
+        System.out.println("TERM NOT VALID");
         return false;
     }
 

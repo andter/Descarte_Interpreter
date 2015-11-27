@@ -39,6 +39,7 @@ public class boolFactorTail implements Expression{
         if (boolFactor.isValid() && boolFactorTail.isValid()) {
             return true;
         }
+        System.out.println("BOOLFACTORTAIL NOT VALID");
         return false;
     }
 
