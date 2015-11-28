@@ -3,8 +3,14 @@
  */
 public class termTail implements Expression{
     boolean valid;
-    boolean executable;
+    boolean executable = true;
+    public enum Type{
+        NONE,
+        PLUS,
+        MINUS
+    }
 
+    Type type;
     term term;
     termTail termTail;
 
@@ -14,6 +20,11 @@ public class termTail implements Expression{
         System.out.println();
 
         if(tokens.get(0).equals("+") || tokens.get(0).equals("-")) {
+            if(tokens.get(0).equals("+")){
+                type = Type.PLUS;
+            } else{
+                type = Type.MINUS;
+            }
             tokens.remove(0);
 
             int firstPlus = tokens.indexOf("+");
@@ -39,7 +50,7 @@ public class termTail implements Expression{
 
     public termTail(){
         valid = true;
-        executable = true;
+        executable = false;
     }
 
     @Override
@@ -55,8 +66,17 @@ public class termTail implements Expression{
         return false;
     }
 
-    @Override
-    public void execute() {
-
+    public double executeDouble(Variables variables) {
+        if(termTail.executable){
+            switch(termTail.type){
+                case PLUS:
+                    return term.executeDouble(variables) + termTail.executeDouble(variables);
+                case MINUS:
+                    return term.executeDouble(variables) - termTail.executeDouble(variables);
+            }
+        } else{
+            return term.executeDouble(variables);
+        }
+        return 0;
     }
 }

@@ -42,7 +42,20 @@ public class arithExpr implements Expression{
         return false;
     }
 
-    @Override
+    public double executeDouble(Variables variables){
+        if(termTail.executable){
+            switch(termTail.type){
+                case PLUS:
+                    return term.executeDouble(variables) + termTail.executeDouble(variables);
+                case MINUS:
+                    return term.executeDouble(variables) - termTail.executeDouble(variables);
+            }
+        } else{
+            return term.executeDouble(variables);
+        }
+        return 0;
+    }
+
     public void execute() {
 
     }

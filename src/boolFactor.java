@@ -61,8 +61,7 @@ public class boolFactor implements Expression{
         return false;
     }
 
-    @Override
-    public void execute() {
-
+    public double executeDouble(Variables variables) {
+        return arithmeticExpression.executeDouble(variables);
     }
 }

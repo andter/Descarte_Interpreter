@@ -68,10 +68,9 @@ public class stmtList implements Expression {
 
     }
 
-    public void execute(){
-        System.out.println("Execute StatementList");
-        statement.execute();
-        statementTail.execute();
+    public void execute(Variables variables){
+        statement.execute(variables);
+        statementTail.execute(variables);
     }
 
     @Override

@@ -1,4 +1,8 @@
+import javafx.util.Pair;
 import jdk.nashorn.internal.runtime.Debug;
+
+import java.util.ArrayList;
+
 /**
  * Created by andy on 11/21/2015.
  */
@@ -6,13 +10,21 @@ import jdk.nashorn.internal.runtime.Debug;
 public class Main {
 
     public static final String TOKEN_FILE = "C:\\Users\\andy\\IdeaProjects\\Descarte Interpreter\\token.dat";
+
     public static void main(String[] args) {
         TokenAnalyzer analyzer = new TokenAnalyzer(TOKEN_FILE);
         analyzer.initialize();
         TokenList tokens = analyzer.getTokens();
 
         prog program = new prog(tokens);
-        System.out.println("Valid: " + program.isValid());
-        //program.execute();
+
+        if (program.isValid()) {
+            System.out.println("\nProgram Validated!\n\nExecuting Program:\n");
+            Variables variables = new Variables();
+            program.execute(variables);
+            variables.print();
+        } else{
+            System.out.println("The Program is NOT valid!");
+        }
     }
 }

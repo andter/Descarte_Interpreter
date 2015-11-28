@@ -56,11 +56,13 @@ public class stmtTail implements Expression{
         executable = false;
     }
 
-    public void execute(){
-        /*if(valid && executable) {
-            statement.execute();
-            statementTail.execute();
-        }*/
+    public void execute(Variables variables){
+        if(statement != null) {
+            statement.execute(variables);
+        }
+        if(statementTail != null) {
+            statementTail.execute(variables);
+        }
     }
 
     @Override

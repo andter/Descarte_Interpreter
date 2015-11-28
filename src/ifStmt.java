@@ -1,3 +1,5 @@
+import javafx.util.Pair;
+
 /**
  * Created by andy on 11/23/2015.
  */
@@ -6,6 +8,8 @@ public class ifStmt extends stmt implements Expression{
     expr expression = null;
     stmtList statementList = null;
     elsePart elsePart = null;
+
+    Pair<String, Double> variables;
 
     public ifStmt(TokenList tokens){
         System.out.println("IFSTMT-----");
@@ -68,7 +72,12 @@ public class ifStmt extends stmt implements Expression{
     }
 
     @Override
-    public void execute() {
+    public void execute(Variables variables) {
+        if(expression.executeString(variables).equals("true")){
 
+        }
+        else{
+        }
+        System.out.println("Executing IF Statement");
     }
 }

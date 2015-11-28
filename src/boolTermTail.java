@@ -46,8 +46,17 @@ public class boolTermTail implements Expression{
         return false;
     }
 
-    @Override
-    public void execute() {
-
+    public String executeString(Variables variables) {
+        if(boolTermTail.executable){
+            if(boolTerm.executeString(variables).equals("true") || boolTermTail.executeString(variables).equals("true")){
+                return "true";
+            }
+        }
+        else{
+            if(boolTerm.executeString(variables).equals("true")){
+                return "true";
+            }
+        }
+        return "false";
     }
 }

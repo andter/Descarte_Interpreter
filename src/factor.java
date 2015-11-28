@@ -57,8 +57,15 @@ public class factor implements Expression{
         return false;
     }
 
-    @Override
-    public void execute() {
-
+    public double executeDouble(Variables variables) {
+        switch(type){
+            case FACTOR:
+                return factor.executeDouble(variables);
+            case EXPRESSION:
+                return expression.executeDouble(variables);
+            case ATOM:
+                return atom.executeDouble(variables);
+        }
+        return 0;
     }
 }

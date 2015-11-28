@@ -5,6 +5,14 @@ public class factorTail implements Expression {
     boolean valid;
     boolean executable = true;
 
+    public enum Type{
+        NONE,
+        MULTIPLY,
+        DIVIDE
+    }
+
+    Type type;
+
     factor factor;
     factorTail factorTail;
 
@@ -14,6 +22,11 @@ public class factorTail implements Expression {
         System.out.println();
 
         if(tokens.get(0).equals("*") || tokens.get(0).equals("/")) {
+            if(tokens.get(0).equals("*")){
+                type = Type.MULTIPLY;
+            } else{
+                type = Type.DIVIDE;
+            }
             tokens.remove(0);
 
             int firstMult = tokens.indexOf("*");
@@ -55,8 +68,17 @@ public class factorTail implements Expression {
         return false;
     }
 
-    @Override
-    public void execute() {
-
+    public double executeDouble(Variables variables) {
+        if (factorTail.executable) {
+            switch (factorTail.type) {
+                case MULTIPLY:
+                    return factor.executeDouble(variables) * factorTail.executeDouble(variables);
+                case DIVIDE:
+                    return factor.executeDouble(variables) / factorTail.executeDouble(variables);
+            }
+        } else {
+            return factor.executeDouble(variables);
+        }
+        return 0;
     }
 }

@@ -3,5 +3,4 @@
  */
 public interface Expression {
     public boolean isValid();
-    public void execute();
 }

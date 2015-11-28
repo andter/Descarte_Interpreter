@@ -41,8 +41,17 @@ public class term implements Expression {
         return false;
     }
 
-    @Override
-    public void execute() {
-
+    public double executeDouble(Variables variables) {
+        if (factorTail.executable) {
+            switch (factorTail.type) {
+                case MULTIPLY:
+                    return factor.executeDouble(variables) * factorTail.executeDouble(variables);
+                case DIVIDE:
+                    return factor.executeDouble(variables) / factorTail.executeDouble(variables);
+            }
+        } else {
+            return factor.executeDouble(variables);
+        }
+        return 0;
     }
 }

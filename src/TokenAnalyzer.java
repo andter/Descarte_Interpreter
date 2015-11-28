@@ -90,7 +90,8 @@ public class TokenAnalyzer {
 
             if(!containsToken(currentToken) && currentToken.matches("[0-9]+\\.*[0-9]*") && containsToken(nextChar)){
                 if (!nextChar.equals(".")){
-                    printList.add("number");
+                    //printList.add("number");
+                    printList.add(currentToken);
                     currentToken = nextChar;
                     continue;
                 }
@@ -99,7 +100,8 @@ public class TokenAnalyzer {
                     while(input.hasNext() && !containsToken(s)){
                         s = input.next();
                     }
-                    printList.add("number");
+                    //printList.add("number");
+                    printList.add(currentToken + s);
                     currentToken = s;
                     continue;
                 }

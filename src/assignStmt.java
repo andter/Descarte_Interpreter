@@ -3,6 +3,7 @@
  */
 public class assignStmt extends stmt implements Expression {
     expr expression = null;
+    String variable;
 
     public assignStmt(TokenList tokens){
         System.out.println("ASSIGNSTMT-----");
@@ -10,6 +11,7 @@ public class assignStmt extends stmt implements Expression {
         System.out.println();
 
         if(tokens.size() > 2) {
+                variable = tokens.get(0);
                 if (tokens.get(1).equals(":=")) {
                     expression = new expr(tokens.between(2, tokens.size()));
                 }
@@ -27,7 +29,7 @@ public class assignStmt extends stmt implements Expression {
     }
 
     @Override
-    public void execute() {
-
+    public void execute(Variables variables) {
+        variables.addVariable(variable, expression.executeDouble(variables));
     }
 }

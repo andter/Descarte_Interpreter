@@ -1,3 +1,5 @@
+import javafx.util.Pair;
+
 import java.util.ArrayList;
 
 /**
@@ -22,9 +24,10 @@ public class prog implements Expression{
         }
     }
 
-    public void execute(){
-        statementList.execute();
+    public void execute(Variables variables){
+        statementList.execute(variables);
     }
+
     @Override
     public boolean isValid() {
         if(statementList == null){

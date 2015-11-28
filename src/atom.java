@@ -3,6 +3,7 @@
  */
 public class atom implements Expression{
     boolean valid = false;
+    String token;
 
     public atom(TokenList tokens){
         System.out.println("ATOM-----");
@@ -10,6 +11,7 @@ public class atom implements Expression{
         System.out.println();
 
         if(tokens.size() == 1){
+            token = tokens.get(0);
             valid = true;
         }
     }
@@ -24,8 +26,20 @@ public class atom implements Expression{
         return false;
     }
 
-    @Override
-    public void execute() {
-
+    public double executeDouble(Variables variables) {
+        if(valid) {
+            try {
+                return Double.parseDouble(token);
+            } catch(NumberFormatException e){
+                if(variables.checkVariable(token)){
+                    return variables.getValue(token);
+                }
+                else{
+                    System.out.println("ERROR! Reference to Variable: " + token + " was not found!");
+                    System.exit(0);
+                }
+            }
+        }
+        return 0;
     }
 }

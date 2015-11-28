@@ -34,6 +34,7 @@ public class stmt implements Expression{
                 this.type = Type.READ;
             } else if (tokens.get(0).equals("PRINT")) {
                 this.type = Type.PRINT;
+                statement = new printStmt(tokens);
             } else {
                 this.type = Type.ASSIGNMENT;
                 statement = new assignStmt(tokens);
@@ -46,10 +47,11 @@ public class stmt implements Expression{
         valid = true;
     }
 
-    public void execute(){
+    public void execute(Variables variables){
         switch(type){
             case IF:
-                System.out.println("Executing IF Statement");
+                System.out.println("Executing Statement");
+                statement.execute(variables);
                 break;
             case LOOP:
                 System.out.println("Executing LOOP Statement");
@@ -58,13 +60,12 @@ public class stmt implements Expression{
                 System.out.println("Executing BREAK Statement");
                 break;
             case ASSIGNMENT:
-                System.out.println("Executing ASSIGNMENT Statement");
+                statement.execute(variables);
                 break;
             case READ:
                 System.out.println("Executing READ Statement");
                 break;
             case PRINT:
-                System.out.println("Executing PRINT Statement");
                 break;
         }
     }

@@ -31,8 +31,24 @@ public class expr implements Expression{
         return false;
     }
 
-    @Override
-    public void execute() {
+    public double executeDouble(Variables variables){
+        return boolTerm.executeDouble(variables);
+    }
 
+    public String executeString(Variables variables){
+        if(boolTermTail.executable){
+            if(boolTerm.executeString(variables).equals("true") || boolTermTail.executeString(variables).equals("true")){
+                return "true";
+            } else{
+                System.out.println(boolTerm.executeString(variables) + boolTermTail.executeString(variables));
+                return boolTerm.executeString(variables) + boolTermTail.executeString(variables);
+            }
+        }
+        else{
+            if(boolTerm.executeString(variables).equals("true")){
+                return "true";
+            }
+        }
+        return "false";
     }
 }

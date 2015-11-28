@@ -31,8 +31,12 @@ public class boolTerm implements Expression {
         return false;
     }
 
-    @Override
-    public void execute() {
 
+    public double executeDouble(Variables variables){
+        return boolFactor.executeDouble(variables);
+    }
+
+    public String executeString(Variables variables){
+        return "true";
     }
 }

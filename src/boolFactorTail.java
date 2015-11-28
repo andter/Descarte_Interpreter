@@ -43,8 +43,7 @@ public class boolFactorTail implements Expression{
         return false;
     }
 
-    @Override
-    public void execute() {
-
+    public String executeString() {
+        return null;
     }
 }
