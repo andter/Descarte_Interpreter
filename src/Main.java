@@ -15,14 +15,11 @@ public class Main {
         TokenAnalyzer analyzer = new TokenAnalyzer(TOKEN_FILE);
         analyzer.initialize();
         TokenList tokens = analyzer.getTokens();
-
         prog program = new prog(tokens);
 
         if (program.isValid()) {
             System.out.println("\nProgram Validated!\n\nExecuting Program:\n");
-            Variables variables = new Variables();
-            program.execute(variables);
-            variables.print();
+            program.execute(new Variables());
         } else{
             System.out.println("The Program is NOT valid!");
         }

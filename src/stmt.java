@@ -66,6 +66,7 @@ public class stmt implements Expression{
                 System.out.println("Executing READ Statement");
                 break;
             case PRINT:
+                statement.execute(variables);
                 break;
         }
     }
