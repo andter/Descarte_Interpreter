@@ -21,13 +21,14 @@ public class TokenAnalyzer {
     }
 
     private void createFileReader(){
+        FileInputStream fis = null;
         try {
-            System.setIn(new FileInputStream(new File(file)));
+            fis = new FileInputStream(new File(file));
         } catch (FileNotFoundException e) {
             System.out.println("File Failed to Load");
             e.printStackTrace();
         }
-        input = new Scanner(System.in);
+        input = new Scanner(fis);
         input.useDelimiter("");
     }
     /*

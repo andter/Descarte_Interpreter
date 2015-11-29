@@ -77,8 +77,7 @@ public class ifStmt extends stmt implements Expression{
             statementList.execute(variables);
         }
         else{
-
+            elsePart.execute(variables);
         }
-        System.out.println("Executing IF Statement");
     }
 }

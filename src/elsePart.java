@@ -42,7 +42,9 @@ public class elsePart implements Expression{
         return false;
     }
 
-    public void execute() {
-
+    public void execute(Variables variables) {
+        if(statementList != null) {
+            statementList.execute(variables);
+        }
     }
 }

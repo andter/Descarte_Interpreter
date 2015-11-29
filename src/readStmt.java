@@ -1,22 +1,23 @@
 import java.util.Scanner;
+import java.io.*;
 
 /**
  * Created by andy on 11/28/2015.
  */
-public class idListTail implements Expression {
+public class readStmt extends stmt implements Expression{
     idListTail idListTail;
     String token;
+
     Scanner input;
 
-    public idListTail(TokenList tokens){
-        System.out.println("IDLISTTAIL-----");
+    public readStmt(TokenList tokens){
+        System.out.println("READSTMT-----");
         tokens.printList();
         System.out.println();
 
-        tokens.remove(0);
-        token = tokens.get(0);
+        token = tokens.get(1);
         int firstComma = tokens.indexOf(",");
-        if(firstComma != -1 && firstComma > 0){
+        if(firstComma != -1 && firstComma > 1){
             idListTail = new idListTail(tokens.between(firstComma, tokens.size()));
         }
     }
@@ -32,22 +33,10 @@ public class idListTail implements Expression {
     }
 
     public void execute(Variables variables){
-        if(variables.checkVariable(token)){
-            System.out.print(variables.getValue(token) + " ");
-        } else{
-            System.out.print("null ");
-        }
-        if(idListTail != null){
-            idListTail.execute(variables);
-        }
-    }
-
-    public void executeRead(Variables variables){
         try{
             input = new Scanner(System.in);
             double d = input.nextDouble();
             variables.addVariable(token, d);
-            input.close();
             if(idListTail != null) {
                 idListTail.executeRead(variables);
             }

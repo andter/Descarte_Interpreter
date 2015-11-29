@@ -32,6 +32,7 @@ public class stmt implements Expression{
                 this.type = Type.BREAK;
             } else if (tokens.get(0).equals("READ")) {
                 this.type = Type.READ;
+                statement = new readStmt(tokens);
             } else if (tokens.get(0).equals("PRINT")) {
                 this.type = Type.PRINT;
                 statement = new printStmt(tokens);
@@ -50,7 +51,6 @@ public class stmt implements Expression{
     public void execute(Variables variables){
         switch(type){
             case IF:
-                System.out.println("Executing Statement");
                 statement.execute(variables);
                 break;
             case LOOP:
@@ -63,7 +63,7 @@ public class stmt implements Expression{
                 statement.execute(variables);
                 break;
             case READ:
-                System.out.println("Executing READ Statement");
+                statement.execute(variables);
                 break;
             case PRINT:
                 statement.execute(variables);

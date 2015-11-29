@@ -2,6 +2,7 @@ import javafx.util.Pair;
 import jdk.nashorn.internal.runtime.Debug;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
  * Created by andy on 11/21/2015.
@@ -19,7 +20,9 @@ public class Main {
 
         if (program.isValid()) {
             System.out.println("\nProgram Validated!\n\nExecuting Program:\n");
-            program.execute(new Variables());
+            Variables variables = new Variables();
+            program.execute(variables);
+            variables.print();
         } else{
             System.out.println("The Program is NOT valid!");
         }
