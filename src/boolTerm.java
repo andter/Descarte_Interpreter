@@ -36,7 +36,16 @@ public class boolTerm implements Expression {
         return boolFactor.executeDouble(variables);
     }
 
-    public String executeString(Variables variables){
-        return "true";
+    public boolean executeBoolean(Variables variables){
+        if(boolFactorTail.executable){
+            if(boolFactor.executeBoolean(variables) && boolFactorTail.executeBoolean(variables)){
+                return true;
+            } else{
+                return false;
+            }
+        }
+        else{
+            return boolFactor.executeBoolean(variables);
+        }
     }
 }

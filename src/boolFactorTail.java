@@ -5,7 +5,7 @@ public class boolFactorTail implements Expression{
     boolFactor boolFactor;
     boolFactorTail boolFactorTail;
     boolean valid;
-    boolean executable;
+    boolean executable = true;
 
     public boolFactorTail(TokenList tokens){
         System.out.println("BoolFactorTail-----");
@@ -45,5 +45,18 @@ public class boolFactorTail implements Expression{
 
     public String executeString() {
         return null;
+    }
+
+    public boolean executeBoolean(Variables variables){
+        if(boolFactorTail.executable){
+            if(boolFactor.executeBoolean(variables) && boolFactorTail.executeBoolean(variables)){
+                return true;
+            } else{
+                return false;
+            }
+        }
+        else{
+            return boolFactor.executeBoolean(variables);
+        }
     }
 }

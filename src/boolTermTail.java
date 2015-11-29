@@ -6,7 +6,7 @@ public class boolTermTail implements Expression{
     boolTermTail boolTermTail;
 
     boolean valid;
-    boolean executable;
+    boolean executable = true;
 
     public boolTermTail(TokenList tokens){
         System.out.println("BoolTermTail-----");
@@ -46,17 +46,14 @@ public class boolTermTail implements Expression{
         return false;
     }
 
-    public String executeString(Variables variables) {
+    public boolean executeBoolean(Variables variables){
         if(boolTermTail.executable){
-            if(boolTerm.executeString(variables).equals("true") || boolTermTail.executeString(variables).equals("true")){
-                return "true";
+            if(boolTerm.executeBoolean(variables) || boolTermTail.executeBoolean(variables)){
+                return true;
+            } else{
+                return false;
             }
         }
-        else{
-            if(boolTerm.executeString(variables).equals("true")){
-                return "true";
-            }
-        }
-        return "false";
+        return boolTerm.executeBoolean(variables);
     }
 }

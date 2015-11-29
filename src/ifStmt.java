@@ -73,10 +73,11 @@ public class ifStmt extends stmt implements Expression{
 
     @Override
     public void execute(Variables variables) {
-        if(expression.executeString(variables).equals("true")){
-
+        if(expression.executeBoolean(variables)){
+            statementList.execute(variables);
         }
         else{
+
         }
         System.out.println("Executing IF Statement");
     }

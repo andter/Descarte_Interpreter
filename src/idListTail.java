@@ -31,6 +31,8 @@ public class idListTail implements Expression {
     public void execute(Variables variables){
         if(variables.checkVariable(token)){
             System.out.print(variables.getValue(token) + " ");
+        } else{
+            System.out.print("null ");
         }
         if(idListTail != null){
             idListTail.execute(variables);

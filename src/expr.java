@@ -35,20 +35,14 @@ public class expr implements Expression{
         return boolTerm.executeDouble(variables);
     }
 
-    public String executeString(Variables variables){
+    public boolean executeBoolean(Variables variables){
         if(boolTermTail.executable){
-            if(boolTerm.executeString(variables).equals("true") || boolTermTail.executeString(variables).equals("true")){
-                return "true";
+            if(boolTerm.executeBoolean(variables) || boolTermTail.executeBoolean(variables)){
+                return true;
             } else{
-                System.out.println(boolTerm.executeString(variables) + boolTermTail.executeString(variables));
-                return boolTerm.executeString(variables) + boolTermTail.executeString(variables);
+                return false;
             }
         }
-        else{
-            if(boolTerm.executeString(variables).equals("true")){
-                return "true";
-            }
-        }
-        return "false";
+        return boolTerm.executeBoolean(variables);
     }
 }

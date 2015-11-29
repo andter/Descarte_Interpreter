@@ -64,4 +64,41 @@ public class boolFactor implements Expression{
     public double executeDouble(Variables variables) {
         return arithmeticExpression.executeDouble(variables);
     }
+
+    public boolean executeBoolean(Variables variables){
+        if(relationOption.executable){
+            switch(relationOption.type){
+                case LESSTHAN:
+                    if(arithmeticExpression.executeDouble(variables) < relationOption.executeDouble(variables)){
+                        return true;
+                    }
+                    return false;
+                case LESSTHANEQUALS:
+                    if(arithmeticExpression.executeDouble(variables) <= relationOption.executeDouble(variables)){
+                        return true;
+                    }
+                    return false;
+                case GREATERTHAN:
+                    if(arithmeticExpression.executeDouble(variables) > relationOption.executeDouble(variables)){
+                        return true;
+                    }
+                    return false;
+                case GREATERTHANEQUALS:
+                    if(arithmeticExpression.executeDouble(variables) >= relationOption.executeDouble(variables)){
+                        return true;
+                    }
+                    return false;
+                case EQUALS:
+                    if(arithmeticExpression.executeDouble(variables) == relationOption.executeDouble(variables)){
+                        return true;
+                    }
+                    return false;
+                case LESSTHANGREATERTHAN:
+                    return true;
+            }
+        }
+        return false;
+    }
+
+
 }

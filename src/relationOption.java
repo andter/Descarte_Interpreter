@@ -3,8 +3,21 @@
  */
 public class relationOption implements Expression{
     arithExpr arithmeticExpression;
-    boolean executable;
+    boolean executable = true;
     boolean valid;
+
+    public enum Type{
+        NONE,
+        LESSTHAN,
+        LESSTHANEQUALS,
+        GREATERTHAN,
+        GREATERTHANEQUALS,
+        EQUALS,
+        LESSTHANGREATERTHAN
+    }
+
+    public Type type;
+
     public relationOption(TokenList tokens){
         System.out.println("RELATIONOPTION-----");
         tokens.printList();
@@ -19,7 +32,29 @@ public class relationOption implements Expression{
 
         if(lessThan == 0 || lessThanEquals == 0 || equals == 0
                 || greaterThanEquals == 0 || greaterThan == 0 || lessThanGreaterThan == 0){
+            String temp = tokens.get(0);
+            switch(temp){
+                case "<":
+                    type = Type.LESSTHAN;
+                    break;
+                case "<=":
+                    type = Type.LESSTHANEQUALS;
+                    break;
+                case ">":
+                    type = Type.GREATERTHAN;
+                    break;
+                case "=":
+                    type = Type.EQUALS;
+                    break;
+                case ">=":
+                    type = Type.GREATERTHANEQUALS;
+                    break;
+                case "<>":
+                    type = Type.LESSTHANGREATERTHAN;
+                    break;
+            }
             arithmeticExpression = new arithExpr(tokens.between(1, tokens.size()));
+
 
         }
     }
@@ -42,7 +77,7 @@ public class relationOption implements Expression{
         return false;
     }
 
-    public void execute() {
-
+    public double executeDouble(Variables variables) {
+        return arithmeticExpression.executeDouble(variables);
     }
 }
