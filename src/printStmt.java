@@ -38,4 +38,18 @@ public class printStmt extends stmt implements Expression{
             idListTail.execute(variables);
         }
     }
+
+    @Override
+    public boolean executeLoop(Variables variables){
+        if(variables.checkVariable(token)){
+            System.out.print(variables.getValue(token) + " ");
+        }
+        else{
+            System.out.print("null ");
+        }
+        if(idListTail != null){
+            idListTail.execute(variables);
+        }
+        return false;
+    }
 }

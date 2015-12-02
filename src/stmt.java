@@ -4,6 +4,7 @@
 public class stmt implements Expression{
     boolean valid = false;
     stmt statement;
+    TokenList temp;
 
     public enum Type {
         IF,
@@ -22,14 +23,18 @@ public class stmt implements Expression{
         tokens.printList();
         System.out.println();
 
+        temp = tokens;
+
         if(tokens.size() > 0) {
             if (tokens.get(0).equals("IF")) {
                 this.type = Type.IF;
                 statement = new ifStmt(tokens);
             } else if (tokens.get(0).equals("LOOP")) {
                 this.type = Type.LOOP;
+                statement = new loopStmt(tokens);
             } else if (tokens.get(0).equals("BREAK")) {
                 this.type = Type.BREAK;
+                statement = new breakStmt(tokens);
             } else if (tokens.get(0).equals("READ")) {
                 this.type = Type.READ;
                 statement = new readStmt(tokens);
@@ -49,27 +54,19 @@ public class stmt implements Expression{
     }
 
     public void execute(Variables variables){
-        switch(type){
-            case IF:
-                statement.execute(variables);
-                break;
-            case LOOP:
-                System.out.println("Executing LOOP Statement");
-                break;
-            case BREAK:
-                System.out.println("Executing BREAK Statement");
-                break;
-            case ASSIGNMENT:
-                statement.execute(variables);
-                break;
-            case READ:
-                statement.execute(variables);
-                break;
-            case PRINT:
-                statement.execute(variables);
-                break;
-        }
+        //System.out.println("Normal Execute: {");
+        //temp.printList();
+        //System.out.println(" Type: " + type + "\n");
+        statement.execute(variables);
     }
+
+    public boolean executeLoop(Variables variables){
+            if(statement != null) {
+                return statement.executeLoop(variables);
+            }
+        return false;
+    }
+
     @Override
     public boolean isValid() {
         System.out.println("CHECKING STATEMENT ISVALID()");

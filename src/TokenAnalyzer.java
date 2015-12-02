@@ -177,8 +177,9 @@ public class TokenAnalyzer {
         tokensList.put("identifier", 28);
         tokensList.put("number", 29);
         tokensList.put("string", 30);
-        tokensList.put(",", 32);
         tokensList.put(".", 31);
+        tokensList.put(",", 32);
+        tokensList.put(":", 33);
     }
 
     private static boolean containsToken(String currentToken) {

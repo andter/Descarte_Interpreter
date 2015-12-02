@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static final String TOKEN_FILE = "C:\\Users\\andy\\IdeaProjects\\Descarte Interpreter\\token.dat";
+    public static final String TOKEN_FILE = "C:\\Users\\andre\\IdeaProjects\\Descarte_Interpreter\\token.dat";
 
     public static void main(String[] args) {
         TokenAnalyzer analyzer = new TokenAnalyzer(TOKEN_FILE);
@@ -22,7 +22,7 @@ public class Main {
             System.out.println("\nProgram Validated!\n\nExecuting Program:\n");
             Variables variables = new Variables();
             program.execute(variables);
-            variables.print();
+            //variables.print();
         } else{
             System.out.println("The Program is NOT valid!");
         }

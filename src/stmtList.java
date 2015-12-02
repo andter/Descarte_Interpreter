@@ -73,6 +73,23 @@ public class stmtList implements Expression {
         statementTail.execute(variables);
     }
 
+
+    public void executeLoop(Variables variables){
+        boolean complete = false;
+        while(!complete){
+            if(statement.executeLoop(variables)){
+                complete = true;
+            }
+            if(statementTail.executeLoop(variables)){
+                complete = true;
+            }
+        }
+    }
+
+    public boolean executeStmtListLoop(Variables variables){
+        return statement.executeLoop(variables) || statementTail.executeLoop(variables);
+    }
+
     @Override
     public boolean isValid() {
         System.out.println("CHECKING STMTLIST ISVALID()");

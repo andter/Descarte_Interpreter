@@ -9,6 +9,7 @@ public class stmtTail implements Expression{
     TokenList temp;
 
     public stmtTail(TokenList tokens) {
+        temp = tokens;
         if(tokens.size() > 0) {
             if (tokens.get(0).equals(";")) {
                 tokens.remove(0);
@@ -63,6 +64,17 @@ public class stmtTail implements Expression{
         if(statementTail != null) {
             statementTail.execute(variables);
         }
+    }
+
+
+    public boolean executeLoop(Variables variables) {
+        if(statement != null && statement.executeLoop(variables)){
+            return true;
+        }
+        if(statementTail != null && statementTail.executeLoop(variables)){
+            return true;
+        }
+        return false;
     }
 
     @Override

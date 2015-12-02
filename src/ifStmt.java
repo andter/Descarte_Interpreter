@@ -80,4 +80,12 @@ public class ifStmt extends stmt implements Expression{
             elsePart.execute(variables);
         }
     }
+
+    @Override
+    public boolean executeLoop(Variables variables){
+        if(statementList.executeStmtListLoop(variables)){
+            return true;
+        }
+        return false;
+    }
 }
