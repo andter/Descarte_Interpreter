@@ -4,7 +4,12 @@ import java.io.FileNotFoundException;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Scanner;
-
+/**
+ * Created by Andrew Becker and Costadinos Argiris
+ * Class: TokenAnalyzer
+ * This class is used to analyze a program and break it into tokens, which are then returned as a token list in order
+ * to continue the next stage, which is the validation and execution of the program.
+ */
 
 public class TokenAnalyzer {
     private static HashMap<String, Integer> tokensList = new HashMap<String, Integer>();

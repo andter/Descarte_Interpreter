@@ -2,7 +2,9 @@ import java.util.Scanner;
 import java.io.*;
 
 /**
- * Created by andy on 11/28/2015.
+ * Created by Andrew Becker and Costadinos Argiris
+ * Class: readStmt
+ * This class is a node built for the special purpose of reading in input from the user and assigning said input to variables.
  */
 public class readStmt extends stmt implements Expression{
     idListTail idListTail;

@@ -1,5 +1,7 @@
 /**
- * Created by andy on 11/24/2015.
+ * Created by Andrew Becker and Costadinos Argiris
+ * Class: boolTermTail
+ * This class is a node used to build out and execute the grammar for using statements with OR
  */
 public class boolTermTail implements Expression{
     boolTerm boolTerm;

@@ -1,5 +1,7 @@
 /**
- * Created by andy on 11/25/2015.
+ * Created by Andrew Becker and Costadinos Argiris
+ * Class: boolFactor
+ * This class is a node used to build out and execute the grammar for comparing boolean expressions
  */
 public class boolFactor implements Expression{
     arithExpr arithmeticExpression;

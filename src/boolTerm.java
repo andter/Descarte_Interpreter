@@ -1,5 +1,7 @@
 /**
- * Created by andy on 11/23/2015.
+ * Created by Andrew Becker and Costadinos Argiris
+ * Class: boolTerm
+ * This class is used as part of the grammar for handling AND
  */
 public class boolTerm implements Expression {
     boolFactor boolFactor;

@@ -3,7 +3,10 @@ import javafx.util.Pair;
 import java.util.ArrayList;
 
 /**
- * Created by andy on 11/22/2015.
+ * Created by Andrew Becker and Costadinos Argiris
+ * Class: prog
+ * This class is a node used at the top level to build out the program
+ * Note: All nodes in this program check nodesunderneath them for validity as well as their own to determine if the program is valid
  */
 public class prog implements Expression{
     private boolean valid = false;

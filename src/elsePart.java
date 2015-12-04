@@ -1,14 +1,18 @@
 /**
- * Created by andy on 11/23/2015.
+ * Created by Andrew Becker and Costadinos Argiris
+ * Class: elsePart
+ * This class is a node used to build out and execute the grammar for an else statement.
+ * Note: This statement is only executed if the boolean expression in an IF statement returns false
  */
 public class elsePart implements Expression{
     boolean valid = false;
     boolean executable = false;
-
+    TokenList temp;
     stmtList statementList;
 
     public elsePart(TokenList tokens){
         System.out.println("ELSEPART-----");
+        temp = tokens;
         tokens.printList();
         System.out.println();
 
@@ -19,9 +23,8 @@ public class elsePart implements Expression{
                 valid = true;
             }
         } else{
-            if(tokens.get(tokens.size()-1).equals("FI"));
             if(firstElse < tokens.size()){
-                if(tokens.between(firstElse+1, tokens.size()-1).size() > 1) {
+                if(tokens.between(firstElse+1, tokens.size()-1).size() > 0) {
                     statementList = new stmtList(tokens.between(firstElse + 1, tokens.size()-1));
                     executable = true;
                 } else{
@@ -46,5 +49,16 @@ public class elsePart implements Expression{
         if(statementList != null) {
             statementList.execute(variables);
         }
+    }
+
+    public boolean executeLoop(Variables variables){
+        //System.out.println("ELSE PART");
+        //temp.printList();
+        if(statementList != null) {
+            if (statementList.executeLoop(variables)) {
+                return true;
+            }
+        }
+        return false;
     }
 }

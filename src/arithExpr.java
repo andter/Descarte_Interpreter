@@ -1,5 +1,7 @@
 /**
- * Created by andy on 11/25/2015.
+ * Created by Andrew Becker and Costadinos Argiris
+ * Class: arithExpr
+ * This class is a node used to correctly build out part of the tree for performing additional and subtraction
  */
 public class arithExpr implements Expression{
 

@@ -1,7 +1,10 @@
 import javafx.util.Pair;
-
 /**
- * Created by andy on 11/23/2015.
+ * Created by Andrew Becker and Costadinos Argiris
+ * Class: ifStmt
+ * This class is a node that creates and executes the statement for all if statements
+ * Note:  The class has special logic in order to execute either the statementList, if the expression returns true
+ *        or the elsePart isf the expression returns false
  */
 public class ifStmt extends stmt implements Expression{
     boolean valid = false;
@@ -83,8 +86,15 @@ public class ifStmt extends stmt implements Expression{
 
     @Override
     public boolean executeLoop(Variables variables){
-        if(statementList.executeStmtListLoop(variables)){
-            return true;
+        if(expression.executeBoolean(variables)) {
+            if (statementList.executeLoop(variables)) {
+                return true;
+            }
+        }
+        else{
+            if(elsePart.executeLoop(variables)){
+                return true;
+            }
         }
         return false;
     }

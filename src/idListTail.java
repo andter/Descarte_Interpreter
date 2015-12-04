@@ -1,7 +1,9 @@
 import java.util.Scanner;
 
 /**
- * Created by andy on 11/28/2015.
+ * Created by Andrew Becker and Costadinos Argiris
+ * Class: elsePart
+ * This class is a node used for simple print and read statements
  */
 public class idListTail implements Expression {
     idListTail idListTail;

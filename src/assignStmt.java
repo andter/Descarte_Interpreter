@@ -1,5 +1,7 @@
 /**
- * Created by andy on 11/23/2015.
+ * Created by Andrew Becker and Costadinos Argiris
+ * Class: assignStmt
+ * This class is a node used to correctly build out the statement for assigning a value to a variable
  */
 public class assignStmt extends stmt implements Expression {
     expr expression = null;
@@ -31,5 +33,11 @@ public class assignStmt extends stmt implements Expression {
     @Override
     public void execute(Variables variables) {
         variables.addVariable(variable, expression.executeDouble(variables));
+    }
+
+    @Override
+    public boolean executeLoop(Variables variables){
+        variables.addVariable(variable, expression.executeDouble(variables));
+        return false;
     }
 }

@@ -1,5 +1,8 @@
 /**
- * Created by andy on 11/22/2015.
+ * Created by Andrew Becker and Costadinos Argiris
+ * Class: stmtTail
+ * This class is part of a statement and contains both a statement and statement tail, it is used for the creation
+ * of statements in a tree as well as their execution.
  */
 public class stmtTail implements Expression{
     boolean valid;
@@ -68,11 +71,23 @@ public class stmtTail implements Expression{
 
 
     public boolean executeLoop(Variables variables) {
-        if(statement != null && statement.executeLoop(variables)){
-            return true;
-        }
-        if(statementTail != null && statementTail.executeLoop(variables)){
-            return true;
+        //System.out.println("Execute STMTTAIL LOOP");
+        if(statement != null) {
+          //  temp.printList();
+
+            if (statement.type == stmt.Type.BREAK) {
+                return true;
+            } else {
+                if (statement.executeLoop(variables)) {
+                    return true;
+                } else {
+                    if (statementTail != null) {
+                        if (statementTail.executeLoop(variables)) {
+                            return true;
+                        }
+                    }
+                }
+            }
         }
         return false;
     }

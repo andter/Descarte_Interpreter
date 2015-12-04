@@ -1,5 +1,8 @@
 /**
- * Created by andy on 11/22/2015.
+ * Created by Andrew Becker and Costadinos Argiris
+ * Class: stmt
+ * This class is used as a generic statement class to decide which statement must be created in the tree as well as executing those statements.
+ *
  */
 public class stmt implements Expression{
     boolean valid = false;
@@ -54,17 +57,31 @@ public class stmt implements Expression{
     }
 
     public void execute(Variables variables){
-        //System.out.println("Normal Execute: {");
-        //temp.printList();
-        //System.out.println(" Type: " + type + "\n");
-        statement.execute(variables);
+        if(type == Type.LOOP){
+            statement.executeLoopStart(variables);
+        }
+        else {
+            statement.execute(variables);
+        }
     }
 
     public boolean executeLoop(Variables variables){
-            if(statement != null) {
-                return statement.executeLoop(variables);
+        //System.out.println("Execute STMTLOOP");
+        //temp.printList();
+        if(statement != null) {
+            if (statement.type == stmt.Type.BREAK) {
+                return true;
+            } else {
+                if (statement.executeLoop(variables)) {
+                    return true;
+                }
             }
+        }
         return false;
+    }
+
+    public void executeLoopStart(Variables variables){
+
     }
 
     @Override

@@ -1,5 +1,7 @@
 /**
- * Created by andy on 11/28/2015.
+ * Created by Andrew Becker and Costadinos Argiris
+ * Class: printStmt
+ * This class is a node used to build out part of the tree for creating and executing print statements
  */
 public class printStmt extends stmt implements Expression{
     idListTail idListTail;

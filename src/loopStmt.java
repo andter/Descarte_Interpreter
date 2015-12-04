@@ -1,5 +1,8 @@
 /**
- * Created by andy on 12/1/2015.
+ * Created by Andrew Becker and Costadinos Argiris
+ * Class: loopStmt
+ * This class is a node used to perform LoopStatements, it implements special logic in order to ensure
+ * All statements recur multiple times until a break statement has been executed.
  */
 public class loopStmt extends stmt implements Expression{
     String id;
@@ -42,12 +45,14 @@ public class loopStmt extends stmt implements Expression{
         return false;
     }
 
-    @Override
-    public boolean executeLoop(Variables variables){
-        if(statementList.executeStmtListLoop(variables)){
-            return true;
+    public void executeLoopStart(Variables variables){
+        boolean completed = false;
+        while(!completed) {
+            if (statementList.executeLoop(variables)) {
+                System.out.println("Returned True");
+                completed = true;
+            }
         }
-        return false;
     }
 
     public void execute(Variables variables){

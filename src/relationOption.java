@@ -1,6 +1,9 @@
 /**
- * Created by andy on 11/25/2015.
+ * Created by Andrew Becker and Costadinos Argiris
+ * Class: relationOption
+ * This class is used as part of a node to build out the grammar for performing boolean statements
  */
+
 public class relationOption implements Expression{
     arithExpr arithmeticExpression;
     boolean executable = true;

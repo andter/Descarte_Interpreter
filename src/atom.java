@@ -1,5 +1,7 @@
 /**
- * Created by andy on 11/26/2015.
+ * Created by Andrew Becker and Costadinos Argiris
+ * Class: atom
+ * This class is the final bottom node in a grammar, and can be either an identifier or a value
  */
 public class atom implements Expression{
     boolean valid = false;

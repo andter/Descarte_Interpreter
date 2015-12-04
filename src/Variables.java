@@ -3,7 +3,9 @@ import javafx.util.Pair;
 import java.util.ArrayList;
 
 /**
- * Created by andy on 11/28/2015.
+ * Created by Andrew Becker and Costadinos Argiris
+ * Class: Variables
+ * This class extends the ArrayList class and is used to hold String, Double pairs in order to store variables in the program.
  */
 public class Variables extends ArrayList<Pair<String, Double>> {
 

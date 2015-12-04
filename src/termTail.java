@@ -1,5 +1,8 @@
 /**
- * Created by andy on 11/25/2015.
+ * Created by Andrew Becker and Costadinos Argiris
+ * Class: termTail
+ * This is a node used for the term node in order to ensure terms are executed sequentially
+ * Note: See Term for additional details
  */
 public class termTail implements Expression{
     boolean valid;

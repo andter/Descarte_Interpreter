@@ -1,5 +1,7 @@
 /**
- * Created by andy on 11/25/2015.
+ * Created by Andrew Becker and Costadinos Argiris
+ * Class: term
+ * This class is a term node used for execution of multiplication and division
  */
 public class term implements Expression {
     factor factor;

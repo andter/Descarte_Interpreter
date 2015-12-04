@@ -1,7 +1,10 @@
 import java.util.ArrayList;
 
 /**
- * Created by andy on 11/22/2015.
+ * Created by Andrew Becker and Costadinos Argiris
+ * Class: TokenList
+ * This class is a less generic version of the ArrayList class in which some helper methods are used to aid in the
+ * process creating nodes
  */
 public class TokenList extends ArrayList<String> {
     public TokenList between(int i, int j){

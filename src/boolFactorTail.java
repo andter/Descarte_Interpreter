@@ -1,5 +1,7 @@
 /**
- * Created by andy on 11/25/2015.
+ * Created by Andrew Becker and Costadinos Argiris
+ * Class: boolFactorTail
+ * This class is a node used to build out and execute the grammar for using statements with AND
  */
 public class boolFactorTail implements Expression{
     boolFactor boolFactor;

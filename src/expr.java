@@ -1,5 +1,8 @@
 /**
- * Created by andy on 11/23/2015.
+ * Created by Andrew Becker and Costadinos Argiris
+ * Class: elsePart
+ * This class is a node used to build out and execute the grammar for all expressions.
+ * Note: This statement can either return a boolean type, or a numeric value
  */
 public class expr implements Expression{
     boolTerm boolTerm;

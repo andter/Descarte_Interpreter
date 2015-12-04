@@ -1,5 +1,8 @@
 /**
- * Created by andy on 11/26/2015.
+ * Created by Andrew Becker and Costadinos Argiris
+ * Class: factor
+ * This class is a node used to add the parenthesis to the programming language
+ * Note: This class contains only one type of either an expression, atom, or type
  */
 public class factor implements Expression{
     public enum Type{

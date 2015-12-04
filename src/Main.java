@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * Created by andy on 11/21/2015.
+ * Created by Andrew Becker and Costadinos Argiris
+ * Class: Main
+ * This class is the main class used to check a programs validity, as well as begin the execution of a program
  */
 
 public class Main {
@@ -22,7 +24,6 @@ public class Main {
             System.out.println("\nProgram Validated!\n\nExecuting Program:\n");
             Variables variables = new Variables();
             program.execute(variables);
-            //variables.print();
         } else{
             System.out.println("The Program is NOT valid!");
         }

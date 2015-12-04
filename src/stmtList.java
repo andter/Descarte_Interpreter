@@ -1,18 +1,23 @@
 import java.util.ArrayList;
 
 /**
- * Created by andy on 11/22/2015.
+ * Created by Andrew Becker and Costadinos Argiris
+ * Class: stmtList
+ * This class is a statementList node that creates and has many statements, which are executed in order.
  */
 public class stmtList implements Expression {
     stmt statement = null;
     stmtTail statementTail = null;
     boolean valid = false;
     boolean executable = true;
+    TokenList temp;
 
     public stmtList(TokenList tokens){
         System.out.println("StmtLIST-----");
         tokens.printList();
         System.out.println();
+
+        temp = tokens;
 
         String newStatement = tokens.get(0);
         int beginTail = -1;
@@ -74,20 +79,31 @@ public class stmtList implements Expression {
     }
 
 
-    public void executeLoop(Variables variables){
-        boolean complete = false;
-        while(!complete){
-            if(statement.executeLoop(variables)){
-                complete = true;
-            }
-            if(statementTail.executeLoop(variables)){
-                complete = true;
+    public boolean executeLoop(Variables variables){
+        //System.out.println("Execute STMTLIST LOOP:");
+        if(statement != null) {
+          //  temp.printList();
+
+            if (statement.type == stmt.Type.BREAK) {
+                return true;
+            } else {
+                if (statement.executeLoop(variables)) {
+                    return true;
+                } else {
+                    if(statementTail != null) {
+                        if (statementTail.executeLoop(variables)) {
+                            return true;
+                        }
+                    }
+                }
             }
         }
+        return false;
     }
 
     public boolean executeStmtListLoop(Variables variables){
-        return statement.executeLoop(variables) || statementTail.executeLoop(variables);
+        //return statement.executeLoop(variables) || statementTail.executeLoop(variables);
+        return false;
     }
 
     @Override

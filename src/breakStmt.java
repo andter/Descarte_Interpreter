@@ -1,5 +1,7 @@
 /**
- * Created by andre on 12/1/2015.
+ * Created by Andrew Becker and Costadinos Argiris
+ * Class: breakStmt
+ * This class is a node used to break the while loop when it is complete
  */
 public class breakStmt extends stmt implements Expression{
     boolean valid = false;
@@ -9,9 +11,10 @@ public class breakStmt extends stmt implements Expression{
         tokens.printList();
         System.out.println();
 
-        if(tokens.get(0).equals("BREAK") && tokens.size() < 3){
+        if(tokens.get(0).equals("BREAK")){
             valid = true;
         }
+
     }
 
     public void execute(Variables variables){
