@@ -8,9 +8,8 @@ public class boolFactor implements Expression{
     relationOption relationOption;
 
     public boolFactor(TokenList tokens){
-        System.out.println("BoolFactor-----");
+        System.out.print("BoolFactor: ");
         tokens.printList();
-        System.out.println();
 
         int lessThan = tokens.indexOf("<");
         int lessThanEquals = tokens.indexOf("<=");

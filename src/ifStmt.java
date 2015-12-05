@@ -15,9 +15,8 @@ public class ifStmt extends stmt implements Expression{
     Pair<String, Double> variables;
 
     public ifStmt(TokenList tokens){
-        System.out.println("IFSTMT-----");
+        System.out.print("IFSTMT: ");
         tokens.printList();
-        System.out.println();
         int firstThen = tokens.indexOf("THEN");
 
         if(tokens.get(0).equals("IF")){

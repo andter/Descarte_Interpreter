@@ -13,9 +13,8 @@ public class readStmt extends stmt implements Expression{
     Scanner input;
 
     public readStmt(TokenList tokens){
-        System.out.println("READSTMT-----");
+        System.out.print("READSTMT: ");
         tokens.printList();
-        System.out.println();
 
         token = tokens.get(1);
         int firstComma = tokens.indexOf(",");

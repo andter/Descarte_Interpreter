@@ -9,9 +9,8 @@ public class arithExpr implements Expression{
     termTail termTail;
 
     public arithExpr(TokenList tokens){
-        System.out.println("ARITHEXPR-----");
+        System.out.print("ARITHEXPR: ");
         tokens.printList();
-        System.out.println();
 
         int firstPlus = tokens.indexOf("+");
         int firstMinus = tokens.indexOf("-");

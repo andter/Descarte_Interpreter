@@ -17,9 +17,8 @@ public class factor implements Expression{
     Type type;
 
     public factor(TokenList tokens){
-        System.out.println("FACTOR-----");
+        System.out.print("FACTOR: ");
         tokens.printList();
-        System.out.println();
 
         if(tokens.get(0).equals("-")){
             type = Type.FACTOR;

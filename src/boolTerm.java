@@ -8,9 +8,8 @@ public class boolTerm implements Expression {
     boolFactorTail boolFactorTail;
 
     public boolTerm(TokenList tokens){
-        System.out.println("BOOLTERM-----");
+        System.out.print("BOOLTERM: ");
         tokens.printList();
-        System.out.println();
 
         int firstAnd = tokens.indexOf("AND");
         if(firstAnd == -1){

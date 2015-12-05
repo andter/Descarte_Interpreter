@@ -14,9 +14,8 @@ public class prog implements Expression{
     boolean debug;
 
     public prog(TokenList tokens){
-        System.out.println("PROG-----");
+        System.out.print("PROG: ");
         tokens.printList();
-        System.out.println("");
 
         if(tokens.get(tokens.size()-1).equals(".")){
             valid = true;

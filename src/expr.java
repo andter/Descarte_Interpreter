@@ -9,9 +9,8 @@ public class expr implements Expression{
     boolTermTail boolTermTail;
 
     public expr(TokenList tokens){
-        System.out.println("EXPR-----");
+        System.out.print("EXPR: ");
         tokens.printList();
-        System.out.println();
 
         int firstOr = tokens.indexOf("OR");
         if(firstOr == -1){

@@ -8,9 +8,8 @@ public class assignStmt extends stmt implements Expression {
     String variable;
 
     public assignStmt(TokenList tokens){
-        System.out.println("ASSIGNSTMT-----");
+        System.out.print("ASSIGNSTMT: ");
         tokens.printList();
-        System.out.println();
 
         if(tokens.size() > 2) {
                 variable = tokens.get(0);

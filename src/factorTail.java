@@ -17,9 +17,8 @@ public class factorTail implements Expression {
     factorTail factorTail;
 
     public factorTail(TokenList tokens){
-        System.out.println("FACTORTAIL-----");
+        System.out.print("FACTORTAIL: ");
         tokens.printList();
-        System.out.println();
 
         if(tokens.get(0).equals("*") || tokens.get(0).equals("/")) {
             if(tokens.get(0).equals("*")){

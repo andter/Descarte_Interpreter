@@ -7,9 +7,8 @@ public class breakStmt extends stmt implements Expression{
     boolean valid = false;
 
     public breakStmt(TokenList tokens) {
-        System.out.println("BREAKSTMT-----");
+        System.out.print("BREAKSTMT: ");
         tokens.printList();
-        System.out.println();
 
         if(tokens.get(0).equals("BREAK")){
             valid = true;

@@ -7,11 +7,12 @@
 public class loopStmt extends stmt implements Expression{
     String id;
     stmtList statementList;
+    TokenList temp;
 
     public loopStmt(TokenList tokens){
-        System.out.println("LOOPSTMT-----");
+        System.out.print("LOOPSTMT: ");
         tokens.printList();
-        System.out.println();
+        temp = tokens;
         if(tokens.get(0).equals("LOOP") && tokens.get(2).equals(":")){
             id = tokens.get(1);
 
@@ -49,10 +50,17 @@ public class loopStmt extends stmt implements Expression{
         boolean completed = false;
         while(!completed) {
             if (statementList.executeLoop(variables)) {
-                System.out.println("Returned True");
                 completed = true;
             }
         }
+    }
+
+    @Override
+    public boolean executeLoop(Variables variables){
+        if(statementList.executeLoop(variables)){
+            return true;
+        }
+        return false;
     }
 
     public void execute(Variables variables){

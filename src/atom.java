@@ -8,9 +8,8 @@ public class atom implements Expression{
     String token;
 
     public atom(TokenList tokens){
-        System.out.println("ATOM-----");
+        System.out.print("ATOM: ");
         tokens.printList();
-        System.out.println();
 
         if(tokens.size() == 1){
             token = tokens.get(0);

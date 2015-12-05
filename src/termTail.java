@@ -18,9 +18,8 @@ public class termTail implements Expression{
     termTail termTail;
 
     public termTail(TokenList tokens){
-        System.out.println("TERMTAIL-----");
+        System.out.println("TERMTAIL: ");
         tokens.printList();
-        System.out.println();
 
         if(tokens.get(0).equals("+") || tokens.get(0).equals("-")) {
             if(tokens.get(0).equals("+")){

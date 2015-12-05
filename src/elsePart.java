@@ -11,7 +11,7 @@ public class elsePart implements Expression{
     stmtList statementList;
 
     public elsePart(TokenList tokens){
-        System.out.println("ELSEPART-----");
+        System.out.print("ELSEPART: ");
         temp = tokens;
         tokens.printList();
         System.out.println();

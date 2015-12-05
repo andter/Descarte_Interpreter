@@ -23,9 +23,8 @@ public class relationOption implements Expression{
     public Type type;
 
     public relationOption(TokenList tokens){
-        System.out.println("RELATIONOPTION-----");
+        System.out.print("RELATIONOPTION: ");
         tokens.printList();
-        System.out.println();
 
         int lessThan = tokens.indexOf("<");
         int lessThanEquals = tokens.indexOf("<=");

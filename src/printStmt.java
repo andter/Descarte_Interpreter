@@ -8,9 +8,8 @@ public class printStmt extends stmt implements Expression{
     String token;
 
     public printStmt(TokenList tokens){
-        System.out.println("PRINTSTMT-----");
+        System.out.print("PRINTSTMT: ");
         tokens.printList();
-        System.out.println();
 
         token = tokens.get(1);
         int firstComma = tokens.indexOf(",");

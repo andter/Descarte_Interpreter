@@ -18,9 +18,8 @@ public class stmtTail implements Expression{
                 tokens.remove(0);
             }
                 if(tokens.size() > 0) {
-                    System.out.println("stmtTail-----");
+                    System.out.print("stmtTail: ");
                     tokens.printList();
-                    System.out.println();
                     String newStatement = tokens.get(0);
                     int beginTail = -1;
                     switch (newStatement) {

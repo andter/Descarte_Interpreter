@@ -8,9 +8,8 @@ public class term implements Expression {
     factorTail factorTail;
 
     public term(TokenList tokens){
-        System.out.println("TERM-----");
+        System.out.print("TERM: ");
         tokens.printList();
-        System.out.println();
 
         int firstPlus = tokens.indexOf("*");
         int firstMinus = tokens.indexOf("/");

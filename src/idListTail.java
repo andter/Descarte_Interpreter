@@ -11,9 +11,8 @@ public class idListTail implements Expression {
     Scanner input;
 
     public idListTail(TokenList tokens){
-        System.out.println("IDLISTTAIL-----");
+        System.out.print("IDLISTTAIL: ");
         tokens.printList();
-        System.out.println();
 
         tokens.remove(0);
         token = tokens.get(0);

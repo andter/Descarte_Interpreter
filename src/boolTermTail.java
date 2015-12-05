@@ -11,9 +11,8 @@ public class boolTermTail implements Expression{
     boolean executable = true;
 
     public boolTermTail(TokenList tokens){
-        System.out.println("BoolTermTail-----");
+        System.out.print("BoolTermTail: ");
         tokens.printList();
-        System.out.println();
         if(tokens.size() > 1 && tokens.get(0).equals("OR")){
             tokens.remove(0);
             int firstOr = tokens.indexOf("OR");

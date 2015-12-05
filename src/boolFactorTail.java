@@ -10,9 +10,8 @@ public class boolFactorTail implements Expression{
     boolean executable = true;
 
     public boolFactorTail(TokenList tokens){
-        System.out.println("BoolFactorTail-----");
+        System.out.print("BoolFactorTail: ");
         tokens.printList();
-        System.out.println();
         if(tokens.size() > 0 && tokens.get(0).equals("AND")){
             tokens.remove(0);
             int firstAnd = tokens.indexOf("AND");

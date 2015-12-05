@@ -7,7 +7,6 @@
 public class stmt implements Expression{
     boolean valid = false;
     stmt statement;
-    TokenList temp;
 
     public enum Type {
         IF,
@@ -22,11 +21,8 @@ public class stmt implements Expression{
     Type type;
 
     public stmt(TokenList tokens){
-        System.out.println("STMT-----");
+        System.out.print("STMT: ");
         tokens.printList();
-        System.out.println();
-
-        temp = tokens;
 
         if(tokens.size() > 0) {
             if (tokens.get(0).equals("IF")) {
@@ -66,8 +62,6 @@ public class stmt implements Expression{
     }
 
     public boolean executeLoop(Variables variables){
-        //System.out.println("Execute STMTLOOP");
-        //temp.printList();
         if(statement != null) {
             if (statement.type == stmt.Type.BREAK) {
                 return true;
