@@ -12,18 +12,21 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static final String TOKEN_FILE = "C:\\Users\\andre\\IdeaProjects\\Descarte_Interpreter\\token.dat";
+    public static final String TOKEN_FILE = "token.dat";
 
     public static void main(String[] args) {
         TokenAnalyzer analyzer = new TokenAnalyzer(TOKEN_FILE);
         analyzer.initialize();
         TokenList tokens = analyzer.getTokens();
+        analyzer.printListOfTokens();
         prog program = new prog(tokens);
 
         if (program.isValid()) {
-            System.out.println("\nProgram Validated!\n\nExecuting Program:\n");
+            System.out.println("\r\nProgram Validated!\r\n\r\nExecuting Program:\r\n");
             Variables variables = new Variables();
             program.execute(variables);
+            variables.print();
+            analyzer.printListOfTokens();
         } else{
             System.out.println("The Program is NOT valid!");
         }

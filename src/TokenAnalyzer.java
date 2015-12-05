@@ -15,6 +15,8 @@ public class TokenAnalyzer {
     private static HashMap<String, Integer> tokensList = new HashMap<String, Integer>();
     private String file;
     private Scanner input;
+    static TokenList printList = new TokenList();
+
 
     public TokenAnalyzer(String file){
         this.file = file;
@@ -65,7 +67,6 @@ public class TokenAnalyzer {
     }*/
 
     public TokenList getTokens(){
-        TokenList printList = new TokenList();
         String currentToken = "";
         String nextChar = "";
         boolean foundToken = false;
@@ -94,16 +95,33 @@ public class TokenAnalyzer {
                 continue;
             }
 
-            if(!containsToken(currentToken) && currentToken.matches("[0-9]+\\.*[0-9]*") && containsToken(nextChar)){
-                if (!nextChar.equals(".")){
+            if(!containsToken(currentToken) && currentToken.matches("[0-9]+") && containsToken(nextChar)){ //  Temp Removed: +\.*[0-9]*
+
+                if (nextChar.equals(".")) {
+                    String s = null;
+                    currentToken = currentToken + nextChar;
+                    if (input.hasNext()) {
+                        nextChar = input.next();
+                    }
+                    while (nextChar.matches("[0-9]")){
+                        currentToken = currentToken + nextChar;
+                        if (input.hasNext()) {
+                            nextChar = input.next();
+                        }
+                    }
+                    printList.add(currentToken);
+                    currentToken = nextChar;
+                    continue;
+
+                } else if (!nextChar.equals(".")){
                     //printList.add("number");
                     printList.add(currentToken);
                     currentToken = nextChar;
                     continue;
-                }
-                else{
+
+                }  else {
                     String s = input.next();
-                    while(input.hasNext() && !containsToken(s)){
+                    while (input.hasNext() && !containsToken(s)) {
                         s = input.next();
                     }
                     //printList.add("number");
@@ -111,6 +129,10 @@ public class TokenAnalyzer {
                     currentToken = s;
                     continue;
                 }
+            }
+            else if (!containsToken(currentToken) && currentToken.matches("[0-9]+") && !containsToken(nextChar)){
+                currentToken = currentToken + nextChar;
+                continue;
             }
 
             if(!containsToken(currentToken) && currentToken.matches("\"")){
@@ -204,6 +226,10 @@ public class TokenAnalyzer {
             }
         }
         return null;
+    }
+
+    public static void printListOfTokens(){
+        System.out.println("\r\nprintList Contains: \r\n"+printList.toString()+"\r\n");
     }
 
     public static int getTokenValue(String tokenContainer){
