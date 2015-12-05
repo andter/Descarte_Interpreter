@@ -185,6 +185,7 @@ public class TokenAnalyzer {
         tokensList.put(".", 31);
         tokensList.put(",", 32);
         tokensList.put(":", 33);
+        tokensList.put("!=", 34);
     }
 
     private static boolean containsToken(String currentToken) {

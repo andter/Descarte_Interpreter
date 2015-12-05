@@ -16,7 +16,8 @@ public class relationOption implements Expression{
         GREATERTHAN,
         GREATERTHANEQUALS,
         EQUALS,
-        LESSTHANGREATERTHAN
+        LESSTHANGREATERTHAN,
+        NOTEQUALTO
     }
 
     public Type type;
@@ -32,9 +33,10 @@ public class relationOption implements Expression{
         int greaterThanEquals = tokens.indexOf(">=");
         int greaterThan = tokens.indexOf(">");
         int lessThanGreaterThan = tokens.indexOf("<>");
+        int notEqualTo = tokens.indexOf("!=");
 
         if(lessThan == 0 || lessThanEquals == 0 || equals == 0
-                || greaterThanEquals == 0 || greaterThan == 0 || lessThanGreaterThan == 0){
+                || greaterThanEquals == 0 || greaterThan == 0 || lessThanGreaterThan == 0 || notEqualTo == 0){
             String temp = tokens.get(0);
             switch(temp){
                 case "<":
@@ -54,6 +56,9 @@ public class relationOption implements Expression{
                     break;
                 case "<>":
                     type = Type.LESSTHANGREATERTHAN;
+                    break;
+                case "!=":
+                    type = Type.NOTEQUALTO;
                     break;
             }
             arithmeticExpression = new arithExpr(tokens.between(1, tokens.size()));
