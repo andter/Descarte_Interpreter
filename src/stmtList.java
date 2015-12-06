@@ -41,6 +41,7 @@ public class stmtList implements Expression {
                         index++;
                     }
                     if (location != -1) {
+
                         statement = new stmt(tokens.between(0, location + 1));
                         statementTail = new stmtTail(tokens.between(location + 1, tokens.size()));
                     }

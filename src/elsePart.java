@@ -38,7 +38,7 @@ public class elsePart implements Expression{
     @Override
     public boolean isValid() {
         System.out.println("CHECKING ELSEPART ISVALID()");
-        if(valid || statementList.isValid()){
+        if(valid || (statementList != null && statementList.isValid())){
             return true;
         }
         System.out.println("ELSE PART NOT VALID");

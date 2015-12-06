@@ -1,3 +1,0 @@
-    IF expr < 5 OR expr THEN
-        stmt := 5;
-    FI .

@@ -25,13 +25,23 @@ public class stmtTail implements Expression{
                     switch (newStatement) {
                         case "IF":
                             beginTail = tokens.indexOf("FI");
-                            statement = new stmt(tokens);
-                            statementTail = new stmtTail();
+                            if(beginTail == -1){
+                                statement = new stmt(tokens);
+                                statementTail = new stmtTail();
+                            } else{
+                                statement = new stmt(tokens.between(0, beginTail+1));
+                                statementTail = new stmtTail(tokens.between(beginTail+1, tokens.size()));
+                            }
                             break;
                         case "LOOP":
                             beginTail = tokens.indexOf("REPEAT");
-                            statement = new stmt(tokens);
-                            statementTail = new stmtTail();
+                            if(beginTail == -1){
+                                statement = new stmt(tokens);
+                                statementTail = new stmtTail();
+                            } else{
+                                statement = new stmt(tokens.between(0, beginTail+1));
+                                statementTail = new stmtTail(tokens.between(beginTail+1, tokens.size()));
+                            }
                             break;
                         default:
                             beginTail = tokens.indexOf(";");
