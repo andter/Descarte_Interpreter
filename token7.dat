@@ -1,0 +1,7 @@
+First := 1;
+Second := 10;
+LOOP Increment:
+    First := First + 1;
+    IF First > Second THEN BREAK FI
+REPEAT;
+PRINT First .

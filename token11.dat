@@ -1,0 +1,4 @@
+READ Var;
+Var := Var * 10;
+READ Bool;
+PRINT Var, Bool .

@@ -1,1 +1,4 @@
 Enter Current Pending Bugs Here:
+-token6.dat  : Nested If Statements are not working.
+-token12.dat : Can't take more than three comma delimited variables in single
+               READ command.

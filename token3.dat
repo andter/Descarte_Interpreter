@@ -1,0 +1,4 @@
+First := 5 + 8 * 4;
+Second := 12;
+Final := First * Second + 3;
+PRINT First, Second, Final .
