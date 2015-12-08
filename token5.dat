@@ -1,0 +1,7 @@
+First := 5;
+Second := 10;
+IF First * Second - 25 = 25 THEN
+    Final:= 20;
+    ELSE Final := 30;
+FI
+PRINT Final .
