@@ -48,7 +48,6 @@ public class idListTail implements Expression {
             input = new Scanner(System.in);
             double d = input.nextDouble();
             variables.addVariable(token, d);
-            input.close();
             if(idListTail != null) {
                 idListTail.executeRead(variables);
             }

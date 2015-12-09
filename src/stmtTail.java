@@ -24,16 +24,49 @@ public class stmtTail implements Expression{
                     int beginTail = -1;
                     switch (newStatement) {
                         case "IF":
-                            beginTail = tokens.indexOf("FI");
+                            /*beginTail = tokens.indexOf("FI");
                             if(beginTail == -1){
                                 statement = new stmt(tokens);
                                 statementTail = new stmtTail();
                             } else{
                                 statement = new stmt(tokens.between(0, beginTail+1));
                                 statementTail = new stmtTail(tokens.between(beginTail+1, tokens.size()));
+                            }*/
+                            int count = 0;
+                            int fiLocation = 0;
+                            boolean complete = false;
+                            int index = 0;
+                            int elseLocation = 0;
+                            for(String s : tokens){
+                                if(s.equals("IF")){
+                                    count++;
+                                } else if(s.equals("FI")){
+                                    count--;
+                                }
+                                if(count == 0 && s.equals("FI")){
+                                    if(!complete) {
+                                        fiLocation = index;
+                                        complete = true;
+                                    }
+                                }
+                                if(count == 1 && s.equals("ELSE")){
+                                    if(!complete) {
+                                        elseLocation = index;
+                                        System.out.println("COUNT == 1");
+                                    }
+                                }
+                                index++;
+                            }
+                            statement = new stmt(tokens.between(0, fiLocation+1));
+                            TokenList tail = tokens.between(fiLocation+1, tokens.size());
+                            if(tail.size() > 0){
+                                statementTail = new stmtTail(tail);
+                            }else{
+                                statementTail = new stmtTail();
                             }
                             break;
                         case "LOOP":
+                            /*
                             beginTail = tokens.indexOf("REPEAT");
                             if(beginTail == -1){
                                 statement = new stmt(tokens);
@@ -41,6 +74,32 @@ public class stmtTail implements Expression{
                             } else{
                                 statement = new stmt(tokens.between(0, beginTail+1));
                                 statementTail = new stmtTail(tokens.between(beginTail+1, tokens.size()));
+                            }
+                            */
+                            boolean finished = false;
+                            int counts = 0;
+                            int repeatLocation = 0;
+                            int indexs = 0;
+                            for(String s : tokens) {
+                                if (s.equals("LOOP")) {
+                                    counts++;
+                                } else if (s.equals("REPEAT")) {
+                                    counts--;
+                                }
+                                if (counts == 0 && s.equals("REPEAT")) {
+                                    if (!finished) {
+                                        repeatLocation = indexs;
+                                        complete = true;
+                                    }
+                                }
+                                indexs++;
+                            }
+                            statement = new stmt(tokens.between(0, repeatLocation+1));
+                            TokenList sTail = tokens.between(repeatLocation+1, tokens.size());
+                            if(sTail.size() > 0){
+                                statementTail = new stmtTail(sTail);
+                            }else{
+                                statementTail = new stmtTail();
                             }
                             break;
                         default:

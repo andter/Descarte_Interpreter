@@ -25,8 +25,8 @@ public class Main {
             System.out.println("\r\nProgram Validated!\r\n\r\nExecuting Program:\r\n");
             Variables variables = new Variables();
             program.execute(variables);
+            System.out.println("\n\nVariables:");
             variables.print();
-            analyzer.printListOfTokens();
         } else{
             System.out.println("The Program is NOT valid!");
         }
