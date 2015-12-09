@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static final String TOKEN_FILE = "token.dat";
+    public static final String TOKEN_FILE = "token1.dat";
 
     public static void main(String[] args) {
         TokenAnalyzer analyzer = new TokenAnalyzer(TOKEN_FILE);

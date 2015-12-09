@@ -1,0 +1,11 @@
+First := 5;
+Second := 10;
+IF First * Second - 25 = 25 THEN
+    Final := 10;
+    IF 70 > First * Second THEN
+        Final := 80;
+        ELSE Final := 30;
+    FI
+    ELSE Final := 90;
+FI
+PRINT Final .

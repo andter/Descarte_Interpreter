@@ -1,0 +1,14 @@
+First := 1;
+Second := 10;
+Third := 1;
+LOOP Factorial:
+    Third := Third * First;
+    First := First + 1;
+    IF Third > Second THEN BREAK FI
+REPEAT;
+LOOP Decrement:
+    Third := Third - 1;
+    Second := Second - First;
+    IF Second < 0 AND Third < 0 THEN BREAK FI
+REPEAT;
+PRINT First .
